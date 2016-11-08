@@ -1,0 +1,17 @@
+/*
+ * samplet.h
+ *
+ *  Created on: 8 Nov 2016
+ *      Author: GeorgeQuentin
+ */
+
+#ifndef SAMPLET_H_
+#define SAMPLET_H_
+
+class samplet {
+public:
+	samplet();
+	virtual ~samplet();
+};
+
+#endif /* SAMPLET_H_ */
