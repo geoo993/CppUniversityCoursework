@@ -21,7 +21,16 @@ Sample getSample() {
 //int main() {
 int main(int argc, char *argv[]) {
 
+	string str = "1.18973e+4932 1.18973e+4932";
 
+	stringstream sStream(str);
+	long double tempDouble;
+
+	while (sStream >> tempDouble)
+		cout << tempDouble << endl;
+
+
+	/*
 	Sample s;
 
 	while (cin >> s) {
@@ -80,8 +89,7 @@ int main(int argc, char *argv[]) {
 
 	cout << endl;
 
-	///*
-	Samplet<float> samplet;
+	Samplet<int> samplet;
 
 	while (cin >> samplet) {
 
@@ -105,7 +113,7 @@ int main(int argc, char *argv[]) {
 	 }
 
 	}
-	//*/
+	*/
 
 
 /*

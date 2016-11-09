@@ -268,29 +268,39 @@ long double Sample::median() {
 
 }
 
-void Sample::normalPrint() {
 
-for(auto vec: y) {
-	cout << vec << endl;
+void Sample::remove_unwanted_characters(string &str) {
+
+	string fstring;
+	for (string::iterator it = str.begin(); it != str.end(); ++it) {
+
+		if (isdigit(*it)) {
+			fstring.push_back(*it);
+		} else if (*it == ' ') {
+			fstring.push_back(*it);
+		}
+
+		//		if (!isdigit(*it)) {
+		//			replace(str.begin(), str.end(), *it, ' ');
+		//		}
+
+	}
+	str = fstring;
+	//cout << str << " " << fstring << "\n";
+
 }
-}
 
-Sample Sample::print() {
+void Sample::print() {
 
-	Sample samplePrint(y);
+	cout << *this << endl;
 
-	cout << "< " << samplePrint.y.size() << ": " << flush;
+	cout << "<" << y.size() << ": " << flush;
 
-	for (int i = 0; i < samplePrint.y.size(); i++) {
-		cout << samplePrint.y[i] << ", " << flush;
+	for (int i = 0; i < y.size(); i++) {
+		cout << y[i] << flush;
 	}
 
 	cout << " >" << endl;
-
-	//2
-	cout << samplePrint << endl;
-
-	return samplePrint;
 }
 
 Sample::~Sample() {
@@ -299,7 +309,7 @@ Sample::~Sample() {
 
 ostream &operator<<(ostream &out, const Sample &sample) {
 
-	out << "Cout Ostream Overload Operator of Sample" << endl;
+	out << "Sample to an output stream, using ostream << Operator Overloading of Sample" << endl;
 
 	return out;
 }
@@ -310,50 +320,17 @@ istream & operator>>(istream &in, Sample &sample) {
 
 	string str;
 
-	cout << "Enter " << sample.get_N() << " Values in Vector >" << flush;
+	cout << "Please Enter " << sample.get_N() << " Values in Vector >" << flush;
 
-	//sample.insert_data(i);
+	getline(cin, str);
 
-	while (true) {
-		getline(cin, str);
-		break;
-	}
-	cout << str << endl;
+	//sample.remove_unwanted_characters(str);
 
-	string fstring;
-	for (string::iterator it = str.begin(); it != str.end(); ++it) {
-		//		if (isdigit(*it)) {
-		//			fstring.push_back(*it);
-		//		} else if (*it == ' ') {
-		//			cout << "Space" << endl;
-		//			fstring.push_back(*it);
-		//		}
+	stringstream sStream(str);
+	long double tempDouble;
 
-		if (!isdigit(*it)) {
-			replace(str.begin(), str.end(), *it, ' ');
-		}
-
-	}
-	cout << str << "\n";
-
-	//	for (int i = 0; i < fstring.size(); ++i) {
-	//		cout << fstring[i] << flush;
-	//	}
-
-	stringstream ss(fstring);
-	//stringstream ss(input);
-	int Temp;
-	vector<int> Tokens;
-
-	while (ss >> Temp)
-		Tokens.push_back(Temp);
-
-	cout << " Size: " << Tokens.size() << endl;
-
-	cout << endl;
-	for (auto itt = Tokens.begin(); itt != Tokens.end(); ++itt) {
-		cout << ", " << *itt << endl;
-	}
+	while (sStream >> tempDouble)
+		sample.insert_data(tempDouble);
 
 	return in;
 }

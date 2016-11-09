@@ -294,13 +294,13 @@ void Sample::print() {
 
 	cout << *this << endl;
 
-	cout << "< " << y.size() << ": " << flush;
+	cout << "<" << y.size() << ": " << flush;
 
 	for (int i = 0; i < y.size(); i++) {
-		cout << y[i] << ", " << flush;
+		cout << y[i] << " " << flush;
 	}
 
-	cout << " >" << endl;
+	cout << ">" << endl;
 }
 
 Sample::~Sample() {
@@ -324,7 +324,7 @@ istream & operator>>(istream &in, Sample &sample) {
 
 	getline(cin, str);
 
-	sample.remove_unwanted_characters(str);
+	//sample.remove_unwanted_characters(str);
 
 	stringstream sStream(str);
 	long double tempDouble;

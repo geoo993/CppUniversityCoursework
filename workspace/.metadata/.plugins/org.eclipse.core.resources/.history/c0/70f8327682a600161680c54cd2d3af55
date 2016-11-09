@@ -314,13 +314,13 @@ public:
 
 			cout << *this << endl;
 
-			cout << "<" << y.size() << ": " << flush;
+			cout << "< " << y.size() << ": " << flush;
 
 			for (int i = 0; i < y.size(); i++) {
-				cout << y[i] << " " << flush;
+				cout << y[i] << ", " << flush;
 			}
 
-			cout << ">" << endl;
+			cout << " >" << endl;
 
 		}
 
@@ -339,11 +339,11 @@ public:
 			sample.y.clear();
 
 			string str;
-			cout << "Please Enter " << sample.get_N() << " Values in Template Vector >" << flush;
+			cout << "Please Enter " << sample.get_N() << " Values in Vector >" << flush;
 
 			getline(cin, str);
 
-			//sample.remove_unwanted_characters(str);
+			sample.remove_unwanted_characters(str);
 			stringstream sStream(str);
 			T tempDouble;
 

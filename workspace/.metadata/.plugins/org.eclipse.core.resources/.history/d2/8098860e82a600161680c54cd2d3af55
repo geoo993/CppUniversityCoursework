@@ -21,7 +21,6 @@ Sample getSample() {
 //int main() {
 int main(int argc, char *argv[]) {
 
-
 	Sample s;
 
 	while (cin >> s) {
@@ -80,8 +79,7 @@ int main(int argc, char *argv[]) {
 
 	cout << endl;
 
-	///*
-	Samplet<float> samplet;
+	Samplet<int> samplet;
 
 	while (cin >> samplet) {
 
@@ -105,9 +103,6 @@ int main(int argc, char *argv[]) {
 	 }
 
 	}
-	//*/
-
-
 /*
 
 	 //14

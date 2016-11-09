@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
 	cout << endl;
 
 	///*
-	Samplet<float> samplet;
+	Samplet<int> samplet;
 
 	while (cin >> samplet) {
 
