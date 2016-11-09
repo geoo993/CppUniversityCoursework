@@ -12,6 +12,7 @@
 #include <vector>
 #include <math.h>
 #include <algorithm>
+#include <sstream>
 
 using namespace std;
 
@@ -19,7 +20,7 @@ template<typename T>
 class Samplet {
 private:
 	int input;
-	const int N { 100 };
+	const int N { 6 };
 	vector<T> y;
 
 public:
@@ -93,7 +94,9 @@ public:
 				return T();
 			}
 		}
-
+		void insert_data(T value) {
+			y.push_back(value);
+		}
 		T minimum() {
 
 			T smallest = get_N();
@@ -164,7 +167,7 @@ public:
 
 		}
 
-		T midRange() {
+		T midrange() {
 
 			if (get_size() > 0) {
 				return (maximum() + minimum()) / 2.0;
@@ -286,29 +289,39 @@ public:
 			return (a + b) / 2.0;
 		}
 
-		void normalPrint() {
+		void remove_unwanted_characters(string &str) {
 
-			for(auto vec: y) {
-				cout << vec << endl;
+			string fstring;
+			for (string::iterator it = str.begin(); it != str.end(); ++it) {
+
+				if (isdigit(*it)) {
+					fstring.push_back(*it);
+				} else if (*it == ' ') {
+					fstring.push_back(*it);
+				}
+
+				//		if (!isdigit(*it)) {
+				//			replace(str.begin(), str.end(), *it, ' ');
+				//		}
+
 			}
+			str = fstring;
+			//cout << str << " " << fstring << "\n";
+
 		}
 
-		Samplet print() {
+		void print() {
 
-			Samplet samplePrint(y);
+			cout << *this << endl;
 
-			cout << "< " << 6 << ": " << flush;
+			cout << "< " << y.size() << ": " << flush;
 
-			for (int i = 0; i < samplePrint.y.size(); i++) {
-				cout << samplePrint.y[i] << ", " << flush;
+			for (int i = 0; i < y.size(); i++) {
+				cout << y[i] << ", " << flush;
 			}
 
 			cout << " >" << endl;
 
-			//2
-			cout << samplePrint << endl;
-
-			return samplePrint;
 		}
 
 		~Samplet() {
@@ -316,27 +329,27 @@ public:
 		}
 
 		friend ostream &operator<<(ostream &out, const Samplet &test) {
-			out << "Cout Ostream Overload operator of Samplet" << endl;
+			out << "Sample to an output stream, using ostream << Operator Overloading of Sample" << endl;
 
 			return out;
 		}
 
-		friend istream &operator>>(istream &in, const Samplet &sample) {
-			int i;
-			vector<T> vec;
+		friend istream &operator>>(istream &in, Samplet &sample) {
 
-			do {
+			sample.y.clear();
 
-				cout << "Enter Values in Vector > " << flush;
+			string str;
+			cout << "Please Enter " << sample.get_N() << " Values in Vector >" << flush;
 
-				cin >> i;
-				vec.push_back((T)(i));
+			getline(cin, str);
 
-			}while (i < 15);
+			sample.remove_unwanted_characters(str);
+			stringstream sStream(str);
+			T tempDouble;
 
-			for (int i = 0; i < vec.size(); i++) {
-				cout << vec[i] << " ";
-			}
+			while (sStream >> tempDouble)
+				sample.insert_data(tempDouble);
+
 			return in;
 		}
 

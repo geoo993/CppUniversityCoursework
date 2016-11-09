@@ -7,14 +7,14 @@
 
 #include "sample.h"
 
-Sample::Sample()
-	: input(0) {
-	//cout << "Constructor " << endl;
+Sample::Sample() :
+	input(0) {
+	cout << "Constructor " << endl;
 	y.resize(N);
 }
 
 Sample::Sample(vector<long double> y) {
-	//cout << "Constructor with Parameters" << endl;
+	cout << "Constructor with Parameters" << endl;
 	this -> y.resize(N);
 	this -> y = y;
 
@@ -22,21 +22,21 @@ Sample::Sample(vector<long double> y) {
 }
 
 Sample::Sample(const Sample &other) {//copy constructor
-	//cout << "Copy Constructor" << endl;
+	cout << "Copy Constructor" << endl;
 	y = other.y;
 	input = other.input;
 }
 
 Sample::Sample(Sample &&other) { //this is a move copy constructor, usually you do not need const in R values references
 
-	//cout << "Move Copy Constructor" << endl;
-	y = other.y;
-	input = other.input;
-}
+			cout << "Move Copy Constructor" << endl;
+			y = other.y;
+			input = other.input;
+		}
 
 Sample &Sample::operator=(const Sample &other)//assignment constructor
 {
-	//cout << "Assignment Constructor" << endl;
+	cout << "Assignment Constructor" << endl;
 	y = other.y;
 
 	return *this;
@@ -44,11 +44,11 @@ Sample &Sample::operator=(const Sample &other)//assignment constructor
 
 Sample &Sample::operator=(Sample &&other) {// this is the move assignment operator
 
-	//cout << "Move Assignment Constructor" << endl;
-	y = other.y;
+			cout << "Move Assignment Constructor" << endl;
+			y = other.y;
 
-	return *this;
-}
+			return *this;
+		}
 
 int Sample::get_N() {
 	return this->N;
@@ -57,7 +57,9 @@ int Sample::get_N() {
 void Sample::set_data(vector<long double> y) {
 	this->y = y;
 }
-
+void Sample::insert_data(long double value) {
+	y.push_back(value);
+}
 //3
 vector<long double> Sample::get_data() {
 	return y;
@@ -110,7 +112,6 @@ long double Sample::minimum() {
 
 long double Sample::maximum() {
 
-
 	long double largest = 0;
 
 	if (get_size() <= 0) {
@@ -149,7 +150,7 @@ long double Sample::range() {
 
 }
 
-long double Sample::midRange() {
+long double Sample::midrange() {
 
 	if (get_size() > 0) {
 		return (maximum() + minimum()) / 2.0;
@@ -164,7 +165,6 @@ long double Sample::sum() {
 	long double result = 0;
 
 	if (get_size() > 0) {
-
 
 		for (vector<long double>::iterator it = y.begin(); it != y.end(); it++) {
 			result = result + *it;
@@ -268,29 +268,39 @@ long double Sample::median() {
 
 }
 
-void Sample::normalPrint() {
 
-	for(auto vec: y) {
-		cout << vec << endl;
+void Sample::remove_unwanted_characters(string &str) {
+
+	string fstring;
+	for (string::iterator it = str.begin(); it != str.end(); ++it) {
+
+		if (isdigit(*it)) {
+			fstring.push_back(*it);
+		} else if (*it == ' ') {
+			fstring.push_back(*it);
+		}
+
+		//		if (!isdigit(*it)) {
+		//			replace(str.begin(), str.end(), *it, ' ');
+		//		}
+
 	}
+	str = fstring;
+	//cout << str << " " << fstring << "\n";
+
 }
 
-Sample Sample::print() {
+void Sample::print() {
 
-	Sample samplePrint(y);
+	cout << *this << endl;
 
-	cout << "< " << 2 << ": " << flush;
+	cout << "< " << y.size() << ": " << flush;
 
-	for (int i = 0; i < samplePrint.y.size(); i++) {
-		cout << samplePrint.y[i] << ", " << flush;
+	for (int i = 0; i < y.size(); i++) {
+		cout << y[i] << ", " << flush;
 	}
 
 	cout << " >" << endl;
-
-	//2
-	cout << samplePrint << endl;
-
-	return samplePrint;
 }
 
 Sample::~Sample() {
@@ -299,29 +309,28 @@ Sample::~Sample() {
 
 ostream &operator<<(ostream &out, const Sample &sample) {
 
-	out << "Cout Ostream Overload operator of Sample" << endl;
+	out << "Sample to an output stream, using ostream << Operator Overloading of Sample" << endl;
 
 	return out;
 }
 
-istream &operator>>(istream &in, const Sample &sample) {
+istream & operator>>(istream &in, Sample &sample) {
 
-	int i;
-	vector<long double> vec;
+	sample.y.clear();
 
-	do {
+	string str;
 
-		cout << "Enter Values in Vector > " << flush;
+	cout << "Please Enter " << sample.get_N() << " Values in Vector >" << flush;
 
-		cin >> i;
-		vec.push_back(i);
+	getline(cin, str);
 
-	} while (i < 10);
+	sample.remove_unwanted_characters(str);
 
-	for (int i = 0; i < vec.size(); i++){
-		cout << vec[i] << " ";
-	}
+	stringstream sStream(str);
+	long double tempDouble;
 
+	while (sStream >> tempDouble)
+		sample.insert_data(tempDouble);
 
 	return in;
 }

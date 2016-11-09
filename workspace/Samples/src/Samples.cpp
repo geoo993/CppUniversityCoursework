@@ -10,7 +10,7 @@
 #include <vector>
 #include "sample.h"
 #include "samplet.h"
-#include <memory.h>
+#include <sstream>
 
 using namespace std;
 
@@ -18,101 +18,105 @@ Sample getSample() {
 	return Sample();
 }
 
-
 //int main() {
 int main(int argc, char *argv[]) {
 
-	vector<long double> vec = { 10.3, 35, 7.4 };
+	Sample s;
 
-	Sample sample(vec);
+	while (cin >> s) {
 
-	Sample sample2 = getSample();
 
-	Sample sample3 = sample2;
-	sample3 = sample;
-	sample3 = getSample();
+	 //1
+	 s.print();
 
-	//1
-	sample.print();
+	 //2
+	 cout << s << endl;
 
-	vector<long double> vec2 = { 10.3, 15.3, 7.4, 6.2, 38.5, 2.6, 12.4, 7.4 };
-	sample.set_data(vec2);
+	 //3
+	 cout << "Size: " << s.get_size() << endl;
 
-	//2
-	cout << sample.print() << endl;
+	 //4
+	 cout << "Smallest number: " << s.minimum() << endl;
 
-	//3
-	sample.get_data();
-	Sample sample4(sample.get_data());
+	 //5
+	 cout << "Largest number: " << s.maximum() << endl;
+
+	 //6
+	 cout << "Range: " << s.range() << endl;
+
+	 //7
+	 cout << "Mid-Range: " << s.midrange() << endl;
+
+	 //8
+	 cout << "Sum: " << s.sum() << endl;
+
+	 cout << "Mean: " << s.mean() << endl;
+
+	 //9
+	 cout << "Variance: " << s.variance() << endl;
+
+	 cout << "Mode: " << s.mode() << endl;
+
+	 //10
+	 cout << "Standard Deviation: " << s.std_deviation() << endl;
+
+	 //11
+	 cout << "Median: " << s.median() << endl;
+
+
+//	 cout << s << endl << s.get_size() << endl << s.minimum() << endl << s.range() << endl << s.median()
+//	 			<< endl << s.sum() << endl << s.variance() << endl << s.maximum() << endl
+//	 			<< s.midrange() << endl << s.mode() << endl << s.mean() << endl << s.std_deviation()
+//	 			<< endl;
+
+	 break;
+
+	 if (cin.bad()){
+		cerr << "\nBad input\n\n";
+	 }
+
+	}
 
 	cout << endl;
 
-	cout << "Size " << sample.get_size() << endl;
+	Samplet<int> samplet;
 
-	//4
-	cout << endl;
-	cout << "Smallest number: " << sample.minimum() << endl;
+	while (cin >> samplet) {
 
-	//5
-	cout << endl;
-	cout << "Largest number: " << sample.maximum() << endl;
+	 samplet.print();
+	 cout << "Samplet Size " << samplet.get_size() << endl;
+	 cout << "Samplet Smallest number: " << samplet.minimum() << endl;
+	 cout << "Samplet Largest number: " << samplet.maximum() << endl;
+	 cout << "Samplet Range: " << samplet.range() << endl;
+	 cout << "Samplet Mid-Range: " << samplet.midrange() << endl;
+	 cout << "Samplet Sum: " << samplet.sum() << endl;
+	 cout << "Samplet Mean: " << samplet.mean() << endl;
+	 cout << "Samplet Variance: " << samplet.variance() << endl;
+	 cout << "Samplet Mode: " << samplet.mode() << endl;
+	 cout << "Samplet Standard Deviation: " << samplet.std_deviation() << endl;
+	 cout << "Samplet Median: " << samplet.median() << endl;
 
-	//6
-	cout << endl;
-	cout << "Range: " << sample.range() << endl;
+	 break;
 
-	//7
-	cout << endl;
-	cout << "Mid-Range: " << sample.midRange() << endl;
+	 if (cin.bad()){
+	 	cerr << "\nBad input\n\n";
+	 }
 
-	//8
-	cout << endl;
-	cout << "Sum: " << sample.sum() << endl;
+	}
+/*
 
-	cout << endl;
-	cout << "Mean: " << sample.mean() << endl;
+	 //14
+	 //vector<long double> vec3 = {1.18973e+4932, 1.18973e+4932};
+	 //Sample s2(vec3);
+	 //s2.print();
 
-	//9
-	cout << endl;
-	cout << "Variance: " << sample.variance() << endl;
+	 //PRINT
+	 //magnitude of floating-point constant too large for type 'double'; maximum is 1.7976931348623157E+308 [-Wliteral-range]
+	 //< 2: inf, inf,  >
 
-	//sample.print();
-	cout << endl;
-	cout << "Mode: " << sample.mode() << endl;
-
-	//10
-	cout << endl;
-	cout << "Standard Deviation: " << sample.std_deviation() << endl;
-
-	//11
-	cout << endl;
-	cout << "Median: " << sample.median() << endl;
-
-	//12
-	Sample sample7;
-	cin >> sample7;
-
-	//13
-	vector<int> v = { 7, 11, 2, 13, 3, 5};
-	Samplet<int> samplet(v);
-	samplet.print();
-	Samplet<int> samplet2(samplet.get_data());
-	cout << "Samplet Size " << samplet.get_size() << endl;
-	cout << "Samplet Smallest number: " << samplet.minimum() << endl;
-	cout << "Samplet Largest number: " << samplet.maximum() << endl;
-	cout << "Samplet Range: " << samplet.range() << endl;
-	cout << "Samplet Mid-Range: " << samplet.midRange() << endl;
-	cout << "Samplet Sum: " << samplet.sum() << endl;
-	cout << "Samplet Mean: " << samplet.mean() << endl;
-	cout << "Samplet Variance: " << samplet.variance() << endl;
-	cout << "Samplet Mode: " << samplet.mode() << endl;
-	cout << "Samplet Standard Deviation: " << samplet.std_deviation() << endl;
-	cout << "Samplet Median: " << samplet.median() << endl;
-	Samplet<int> samplet3;
-	cin >> samplet3;
-
+	 //Do you know what the problem is? (Answer in sample.cc as a comment) [2]????????
+	 */
 
 	return 0;
 }
-
 
