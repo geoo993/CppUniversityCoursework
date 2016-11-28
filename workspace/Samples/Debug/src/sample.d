@@ -1,3 +1,5 @@
-src/sample.d: ../src/sample.cpp ../src/sample.h
+src/sample.d: ../src/sample.cc ../src/sample.h ../src/city.hh
 
 ../src/sample.h:
+
+../src/city.hh:

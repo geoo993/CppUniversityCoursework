@@ -1,51 +1,56 @@
-/*
- * sample.h
- *
- *  Created on: 4 Nov 2016
- *      Author: GeorgeQuentin
- */
-
-#ifndef SAMPLE_H_
-#define SAMPLE_H_
+#ifndef _SAMPLE_H_
+#define _SAMPLE_H_
 
 #include <iostream>
 #include <vector>
 #include <math.h>
 #include <algorithm>
 #include <sstream>
+#include <cassert>
 
 using namespace std;
+#include "city.hh"
 
-class Sample {
+class sample : public city {
+  // DON'T CHANGE ANYTHING ABOVE THIS LINE!!! (You can add more includes)
+
 private:
-	int input;
-	const int N { 6 };
+	unsigned int N = 0;
+
+public:
 	vector <long double> y;
 
 
 public:
 
-	Sample();
+	sample();
 
-	Sample(vector<long double> y);
+	sample(vector<long double> y);
 
-	//Sample(const Sample &other)= default;//copy constructor
-	Sample(const Sample &other);
+	sample(const sample &other);
 
-	Sample(Sample &&other);//move copy constructor
+	sample(sample &&other);
 
-	//Sample &operator=(const Sample &other)= default;//assigment operator to default
-	Sample &operator=(const Sample &other);//assignment constructor
+	sample &operator=(const sample &other);//assignment constructor
 
-	Sample &operator=(Sample &&other);//move assignment operator
+	sample &operator=(sample &&other);//move assignment operator
 
+	friend bool operator== (const sample &l, const sample &r);
+	friend bool operator!= (const sample &l, const sample &r);
+	friend bool operator> (const sample &l, const sample &r);
+	friend bool operator<= (const sample &l, const sample &r);
+	friend bool operator< (const sample &l, const sample &r);
+	friend bool operator>= (const sample &l, const sample &r);
+	long double &operator[] (const unsigned index);
+	const long double &operator[] (const unsigned index) const;
+	void operator[] (vector<long double> y);
 
-	int get_N();
-	int get_size();
+	void set_sample(string &str, sample &sample);
+	unsigned int get_size() const;
 	void set_data(vector<long double> y);
 	void insert_data (long double value);
 	void remove_unwanted_characters(string &str);
-	vector<long double> get_data();
+	vector<long double> get_data() const;
 	long double find_data(int value);
 	long double minimum();
 	long double maximum();
@@ -57,21 +62,17 @@ public:
 	long double mode();
 	long double variance();
 	long double std_deviation();
-	void sort();//ascending order
+	void sort();
 	long double calculateAverage(const long double &a, const long double &b);
 
+	void print() const;
 
-	void print();
+	friend ostream &operator<<(ostream &out, const sample &test);
+	friend istream &operator>>(istream &in, sample &sample);
 
-	virtual ~Sample();
-
-	// the put to (<<) operator, so you can use objects of this class with cout
-	friend ostream &operator<<(ostream &out, const Sample &test);
-	friend istream &operator>>(istream &in, Sample &sample);
-
+	virtual ~sample();
 
 };
 
-
-
-#endif /* SAMPLE_H_ */
+/* With normal (non-generic) code, the source (.cc) includes the header (.h). */
+#endif

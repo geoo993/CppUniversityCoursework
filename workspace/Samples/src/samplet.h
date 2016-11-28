@@ -1,409 +1,157 @@
-/*
- * samplet.h
- *
- *  Created on: 8 Nov 2016
- *      Author: GeorgeQuentin
- */
-
-#ifndef SAMPLET_H_
-#define SAMPLET_H_
+#ifndef _SAMPLET_H_
+#define _SAMPLET_H_
 
 #include <iostream>
 #include <vector>
 #include <math.h>
 #include <algorithm>
 #include <sstream>
+#include <cassert>
 
 using namespace std;
+#include "cityt.hh"
+
 
 template<typename T>
-class Samplet {
+class samplet: public cityt<T>{
+	// DON'T CHANGE ANYTHING ABOVE THIS LINE!!! (You can add more includes)
 private:
-	int input;
-	const int N { 6 };
+	unsigned int N = 0;
+
+public:
 	vector<T> y;
 
 public:
 
-	Samplet() :
-		input(T()) {
-		//cout << "Constructor " << endl;
-		y.resize(N);
+	samplet();
+
+	samplet(vector<T> y);
+
+	samplet(const samplet &other);
+
+	samplet(samplet &&other);
+
+	samplet &operator=(const samplet &other);
+
+	samplet &operator=(samplet &&other);
+
+	friend bool operator== (const samplet &l, const samplet &r) {
+		return l.get_size() == r.get_size();
 	}
 
-	Samplet(vector<T> y) {
-		//cout << "Constructor with Parameters" << endl;
-		this -> y.resize(N);
-		this -> y = y;
-
-		input = T();
+	friend bool operator!= (const samplet &l, const samplet &r) {
+		return !(l.get_size() == r.get_size());
 	}
 
-	Samplet(const Samplet &other) {
-		//cout << "Copy Constructor" << endl;
-		y = other.y;
-		input = other.input;
+	friend bool operator> (const samplet &l, const samplet &r) {
+		return l.get_size() > r.get_size();
 	}
 
-	Samplet(Samplet &&other) {
-		//cout << "Move Copy Constructor" << endl;
-			y = other.y;
-			input = other.input;
+	friend bool operator>= (const samplet &l, const samplet &r)
+	{
+		return l.get_size() >= r.get_size();
+	}
+
+	friend bool operator< (const samplet &l, const samplet &r) {
+		return l.get_size() < r.get_size(); // keep the same order
 		}
 
-		Samplet &operator=(const Samplet &other)
-		{
-			//cout << "Assignment Constructor" << endl;
-			y = other.y;
-
-			return *this;
+		friend bool operator<= (const samplet &l, const samplet &r) {
+			return l.get_size() <= r.get_size();
 		}
 
-		Samplet &operator=(Samplet &&other) {
-			//cout << "Move Assignment Constructor" << endl;
-			y = other.y;
+		T &operator[](const unsigned index); // for non-const objects: can be used for assignment
 
-			return *this;
-		}
+		const T &operator[](const unsigned index) const; // for const objects: can only be used for access
 
-		int get_N() {
-			return this->N;
-		}
+		void operator[] (vector<T> y);
 
-		void set_data(vector<T> y) {
-			this->y = y;
-		}
+		void set_samplet(string &str, samplet &samplet);
 
-		vector<T> get_data() {
-			return y;
-		}
+		void set_data(vector<T> y);
 
-		void sort() {//ascending order
-			::sort(y.begin(), y.end());
-		}
+		vector<T> get_data() const;
 
-		int get_size() {
-			return y.size();
-		}
+		void sort();
 
-		T find_data(int index) {
+		unsigned int get_size() const;
 
-			if (index < get_size()) {
-				return y[index];
-			} else {
-				return T();
-			}
-		}
-		void insert_data(T value) {
-			y.push_back(value);
-		}
-		T minimum() {
+		T find_data(int index);
 
-			T smallest = get_N();
+		void insert_data(T value);
 
-			if (get_size() <= 0) {
-				return T();
-			} else {
-				if (y.begin() == y.end()) {
-					//cout << "vector is empty " << endl;
+		T minimum();
 
-					smallest = *(y.end());
-					return smallest;
+		T maximum();
 
-				} else {
+		T range();
 
-					for (auto it = y.begin(); it != y.end(); it++) {
+		T midrange();
 
-						if (*it < smallest) {
-							smallest = *it;
-						}
-					}
+		T sum();
 
-					return smallest;
-				}
-			}
+		T mean();
 
-		}
+		T mode();
 
+		T median();
 
-		T maximum() {
+		T variance();
 
-			T largest = 0;
+		T std_deviation();
 
-			if (get_size() <= 0) {
-				return T();
-			} else {
+		T calculateAverage(const T &a, const T &b);
 
-				if (y.begin() == y.end()) {
-					cout << "vector is empty " << endl;
+		void remove_unwanted_characters(string &str);
 
-					largest = *(y.end());
-					return largest;
+		void print() const;
 
-				} else {
 
-					for (auto it = y.begin(); it != y.end(); it++) {
 
-						if (*it > largest) {
-							largest = *it;
-						}
-					}
+		friend ostream &operator<<(ostream &out, const samplet<T> &samplet) {
 
-				}
-
-				return largest;
-			}
-
-		}
-
-
-		T range() {
-
-			if (get_size() > 0) {
-				return maximum() - minimum();
-			} else {
-				return T();
-			}
-
-		}
-
-		T midrange() {
-
-			if (get_size() > 0) {
-				return (maximum() + minimum()) / 2.0;
-			} else {
-				return T();
-			}
-
-		}
-
-		T sum() {
-
-			T result = 0;
-
-			if (get_size() > 0) {
-
-				for (auto it = y.begin(); it != y.end(); it++) {
-					result = result + *it;
-					//result += *it;
-				}
-
-				return result;
-
-			} else {
-				return T();
-			}
-		}
-
-		T mean() {//also known as average
-
-			if (get_size() > 0) {
-				return sum() / get_size();
-			} else {
-				return T();
-			}
-
-		}
-
-		T mode() {
-
-			if (get_size() > 0) {
-
-				T number = *(y.begin());
-				T mode = number;
-
-				int count = 1;
-				int countMode = 1;
-
-				for (int i = 1; i < get_size(); i++) {
-					if (number == y[i]) {
-						count++;
-					} else {
-						if (count > countMode) {
-							countMode = count;
-							mode = number;
-						}
-						count = 1;
-						number = y[i];
-					}
-				}
-
-				return mode;
-			} else {
-				return T();
-			}
-		}
-
-
-
-		T median() {
-			if (get_size() > 0) {
-
-				sort();
-
-				int index = 0;
-
-				if (get_size() % 2 == 0) {
-					index = int(get_size() / 2.0);
-					//cout << index << " is even    ";
-					return calculateAverage(y[index - 1], y[index]);
-
-				} else {
-					index = int(get_size() / 2.0) + 1;
-					//cout <<  index << " is odd.";
-					return y[index - 1];
-				}
-
-			} else {
-				return T();
-			}
-
-		}
-
-
-
-
-		T variance() {
-
-			if (get_size() > 0) {
-
-				T result = 0;
-
-				for (auto it = y.begin(); it != y.end(); it++) {
-					result = result + pow(*it - mean(), 2.0);
-				}
-
-				return (result / get_size());//or result/(get_size()-1)
-
-			} else {
-				return T();
-			}
-		}
-
-		T std_deviation() {
-			return sqrt(variance());
-		}
-
-		T calculateAverage(const T &a, const T &b) {
-
-			return (a + b) / 2.0;
-		}
-
-		void remove_unwanted_characters(string &str) {
-
-			string fstring;
-			for (string::iterator it = str.begin(); it != str.end(); ++it) {
-
-				if (isdigit(*it)) {
-					fstring.push_back(*it);
-				} else if (*it == ' ') {
-					fstring.push_back(*it);
-				}
-
-				//		if (!isdigit(*it)) {
-				//			replace(str.begin(), str.end(), *it, ' ');
-				//		}
-
-			}
-			str = fstring;
-			//cout << str << " " << fstring << "\n";
-
-		}
-
-		void print() {
-
-			cout << *this << endl;
-
-			cout << "<" << y.size() << ": " << flush;
-
-			for (int i = 0; i < y.size(); i++) {
-				cout << y[i] << " " << flush;
-			}
-
-			cout << ">" << endl;
-
-		}
-
-		~Samplet() {
-			//cout << "Destructor " << endl;
-		}
-
-		friend ostream &operator<<(ostream &out, const Samplet &test) {
-			out << "Sample to an output stream, using ostream << Operator Overloading of Sample" << endl;
+			//out << "Sample to an output stream, using ostream << Operator Overloading of Samplet" << endl;
+			samplet.print();
 
 			return out;
 		}
 
-		friend istream &operator>>(istream &in, Samplet &sample) {
+		friend istream &operator>>(istream &in, samplet<T> &samplet) {
 
-			sample.y.clear();
+			samplet.y.clear();
 
 			string str;
-			cout << "Please Enter " << sample.get_N() << " Values in Template Vector >" << flush;
+			cout << "Please Enter values in the Template Vector >" << flush;
 
 			getline(cin, str);
 
-			//sample.remove_unwanted_characters(str);
+			//samplet.remove_unwanted_characters(str);
 			stringstream sStream(str);
 			T tempDouble;
 
 			while (sStream >> tempDouble)
-				sample.insert_data(tempDouble);
+				samplet.insert_data(tempDouble);
+
+			samplet.set_samplet(str, samplet);
+
+			samplet.sort();
 
 			return in;
 		}
 
+
+
 		class iterator;
 
-		iterator begin() {
-			return iterator(0, *this);
-		}
-		iterator end() {
-			return iterator(get_size(), *this);
-		}
+		iterator begin() { return iterator(0, *this);}
+
+		iterator end() {return iterator(get_size(), *this);}
+
+
+		virtual ~samplet();
 
 };
 
-
-
-template<typename T>
-class Samplet<T>::iterator {
-
-private:
-	unsigned int pos;
-	Samplet &m_samplet;
-
-public:
-	iterator(unsigned int pos, Samplet &s) :
-		pos(pos), m_samplet(s) {
-
-	}
-
-	iterator &operator++() //prefix operator implementation
-	{
-		pos++;
-		return *this;
-	}
-	iterator &operator++(int)//postfix operator implementation
-	{
-		pos++;
-		return *this;
-	}
-
-	bool operator!=(const iterator &other) const//not equal operator implementation
-	{
-		return (pos != other.pos);
-	}
-
-	bool operator==(const iterator &other) const//equals operator implementation
-	{
-		return pos == other.pos;
-	}
-
-	T &operator*() {
-		return m_samplet.get(pos);
-	}
-
-};
-
-#endif /* SAMPLET_H_ */
+/* With generic code, it's the header (.h) that includes the source (.cc), not the other way around that is the normal practice with non-generic code. */
+//#include "samplet.cc"
+#endif
