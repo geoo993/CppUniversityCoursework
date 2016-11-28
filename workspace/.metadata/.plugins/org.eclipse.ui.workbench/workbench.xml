@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="22" version="2.0">
+<workbench progressCount="33" version="2.0">
 <workbenchAdvisor/>
-<window height="768" width="1141" x="135" y="23">
+<window height="873" width="1311" x="4" y="23">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
-<itemSize x="160"/>
+<itemSize x="167"/>
 </perspectiveBar>
 <coolbarLayout locked="0">
 <coolItem id="group.file" itemType="typeGroupMarker"/>
@@ -32,37 +32,56 @@
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
+<part id="5"/>
+<part id="6"/>
 <part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="Samples.cpp" partName="Samples.cpp" path="/Users/GeorgeQuentin/Dev/Cpp/CityUniversity/CppCourseWork/workspace/Samples/src/Samples.cpp" title="Samples.cpp" tooltip="Samples/src/Samples.cpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Samples/src/Samples.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1586" selectionTopPixel="1455"/>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cc" partName="main.cc" path="/Users/GeorgeQuentin/Dev/Cpp/CityUniversity/CppCourseWork/workspace/samples/src/main.cc" title="main.cc" tooltip="samples/src/main.cc" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/samples/src/main.cc"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="515" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sample.cpp" partName="sample.cpp" path="/Users/GeorgeQuentin/Dev/Cpp/CityUniversity/CppCourseWork/workspace/Samples/src/sample.cpp" title="sample.cpp" tooltip="Samples/src/sample.cpp" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Samples/src/sample.cpp"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4730" selectionTopPixel="4214"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="samplet.cc" partName="samplet.cc" path="/Users/GeorgeQuentin/Dev/Cpp/CityUniversity/CppCourseWork/workspace/samples/src/samplet.cc" title="samplet.cc" tooltip="samples/src/samplet.cc" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/samples/src/samplet.cc"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2425" selectionTopPixel="1815"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sample.h" partName="sample.h" path="/Users/GeorgeQuentin/Dev/Cpp/CityUniversity/CppCourseWork/workspace/Samples/src/sample.h" title="sample.h" tooltip="Samples/src/sample.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Samples/src/sample.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1297" selectionTopPixel="705"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="samplet.h" partName="samplet.h" path="/Users/GeorgeQuentin/Dev/Cpp/CityUniversity/CppCourseWork/workspace/samples/src/samplet.h" title="samplet.h" tooltip="samples/src/samplet.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/samples/src/samplet.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="15" selectionOffset="2576" selectionTopPixel="1580"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="samplet.h" partName="samplet.h" path="/Users/GeorgeQuentin/Dev/Cpp/CityUniversity/CppCourseWork/workspace/Samples/src/samplet.h" title="samplet.h" tooltip="Samples/src/samplet.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Samples/src/samplet.h"/>
-<editorState selectionHorizontalPixel="57" selectionLength="0" selectionOffset="5119" selectionTopPixel="5522"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="city.hh" partName="city.hh" path="/Users/GeorgeQuentin/Dev/Cpp/CityUniversity/CppCourseWork/workspace/samples/src/city.hh" title="city.hh" tooltip="samples/src/city.hh" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/samples/src/city.hh"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="205" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="cityt.hh" partName="cityt.hh" path="/Users/GeorgeQuentin/Dev/Cpp/CityUniversity/CppCourseWork/workspace/samples/src/cityt.hh" title="cityt.hh" tooltip="samples/src/cityt.hh" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/samples/src/cityt.hh"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="252" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sample.cc" partName="sample.cc" path="/Users/GeorgeQuentin/Dev/Cpp/CityUniversity/CppCourseWork/workspace/samples/src/sample.cc" title="sample.cc" tooltip="samples/src/sample.cc" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/samples/src/sample.cc"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6580" selectionTopPixel="5372"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="sample.h" partName="sample.h" path="/Users/GeorgeQuentin/Dev/Cpp/CityUniversity/CppCourseWork/workspace/samples/src/sample.h" title="sample.h" tooltip="samples/src/sample.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/samples/src/sample.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="45" selectionOffset="1118" selectionTopPixel="537"/>
 </editor>
 </editors>
 <views>
 <view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
 <viewState CommonNavigator.LINKING_ENABLED="0" CommonNavigator.LINKING_ENABLED.delayed="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
 </view>
-<view id="org.eclipse.ui.views.PropertySheet" partName="Properties"/>
-<view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Target"/>
+<view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
+<viewState/>
+</view>
+<view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Target">
+<viewState/>
+</view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>&#x0A;<category IMemento.internal.id="Warnings (1 item)"/>
+<expanded>&#x0A;<category IMemento.internal.id="Errors (2 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="84" org.eclipse.ui.ide.markerType="114" org.eclipse.ui.ide.pathField="144" org.eclipse.ui.ide.resourceField="114" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -75,8 +94,38 @@
 <view id="org.eclipse.ui.console.ConsoleView" partName="Console">
 <viewState/>
 </view>
-<view id="org.eclipse.mylyn.tasks.ui.views.tasks" partName="Task List"/>
-<view id="org.eclipse.ui.views.TaskList" partName="Tasks"/>
+<view id="org.eclipse.mylyn.tasks.ui.views.tasks" partName="Task List">
+<viewState linkWithEditor="true" presentation="org.eclipse.mylyn.tasks.ui.categorized">
+<sorter groupBy="CATEGORY_QUERY">
+<sorter>
+<sort0 sortDirection="1" sortKey="PRIORITY"/>
+<sort1 sortDirection="1" sortKey="RANK"/>
+<sort2 sortDirection="1" sortKey="DATE_CREATED"/>
+<sort3 sortDirection="1" sortKey="NONE"/>
+<sort4 sortDirection="1" sortKey="NONE"/>
+<sort5 sortDirection="1" sortKey="NONE"/>
+<sort6 sortDirection="1" sortKey="NONE"/>
+<sort7 sortDirection="1" sortKey="NONE"/>
+</sorter>
+</sorter>
+<filteredTreeFindHistory/>
+</viewState>
+</view>
+<view id="org.eclipse.cdt.ui.includeBrowser" partName="Include Browser">
+<viewState inputPath="/Sample/src/Sample.cpp"/>
+</view>
+<view id="org.eclipse.ui.views.TaskList" partName="Tasks">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.completionField" categoryGroup="none" markerContentGenerator="org.eclipse.ui.ide.tasksGenerator" partName="Tasks">
+<columnWidths org.eclipse.ui.ide.completionField="40" org.eclipse.ui.ide.descriptionField="324" org.eclipse.ui.ide.locationField="84" org.eclipse.ui.ide.markerType="114" org.eclipse.ui.ide.pathField="144" org.eclipse.ui.ide.priorityField="40" org.eclipse.ui.ide.resourceField="114"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.completionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.priorityField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.descriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
@@ -133,14 +182,15 @@
 <perspective_action id="org.eclipse.team.ui.TeamSynchronizingPerspective"/>
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.eclipse.cdt.make.ui.views.MakeView"/>
+<view id="org.eclipse.mylyn.tasks.ui.views.tasks"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.ui.views.TaskList"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.ui.views.PropertySheet"/>
-<view id="org.eclipse.ui.views.ContentOutline"/>
-<view id="org.eclipse.cdt.make.ui.views.MakeView"/>
-<view id="org.eclipse.mylyn.tasks.ui.views.tasks"/>
+<view id="org.eclipse.cdt.ui.includeBrowser"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
 <fastViewBars/>
 <layout>
 <mainWindow>
@@ -170,16 +220,18 @@
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
+<page content="org.eclipse.cdt.ui.includeBrowser" label="Include Browser"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
 <info folder="true" part="topRight" ratio="0.7493438" ratioLeft="571" ratioRight="191" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<folder activePageID="org.eclipse.mylyn.tasks.ui.views.tasks" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
 <page content="org.eclipse.cdt.make.ui.views.MakeView" label="Make Target"/>
 <page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="Task List"/>
@@ -197,165 +249,164 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Samples/src/Samples.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Samples/src/samplet.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Samples/src/sample.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Samples/src/sample.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Samples/src/sample.cpp"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Samples/src/sample.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Samples/src/samplet.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Samples/src/sample.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Samples/src/samplet.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/samples/src/samplet.cc"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/samples/src/samplet.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/samples/src/main.cc"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/samples/src/sample.cc"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/samples/src/sample.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/samples/src/city.hh"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/samples/src/cityt.hh"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/main/src/main.cpp"/>
 </editors>
-<item historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="1795" y="0"/>
+<item historyLabel="sample.cc" index="3">
+<position info="not_deleted" x="480" y="20"/>
 </item>
-<item historyLabel="sample.cpp" index="2">
-<position info="not_deleted" x="4865" y="0"/>
+<item historyLabel="sample.h" index="4">
+<position info="not_deleted" x="1118" y="45"/>
 </item>
-<item historyLabel="Samples.cpp" index="0">
-<position/>
+<item historyLabel="sample.cc" index="3">
+<position info="not_deleted" x="480" y="20"/>
 </item>
-<item historyLabel="sample.cpp" index="2">
-<position info="not_deleted" x="4865" y="0"/>
+<item historyLabel="sample.cc" index="3">
+<position info="not_deleted" x="6570" y="0"/>
 </item>
-<item historyLabel="Samples.cpp" index="0">
-<position/>
+<item historyLabel="sample.h" index="4">
+<position info="not_deleted" x="1118" y="45"/>
 </item>
-<item historyLabel="Samples.cpp" index="0">
-<position/>
+<item historyLabel="sample.cc" index="3">
+<position info="not_deleted" x="6566" y="0"/>
 </item>
-<item historyLabel="sample.cpp" index="2">
-<position info="not_deleted" x="4865" y="0"/>
+<item historyLabel="sample.h" index="4">
+<position info="not_deleted" x="1161" y="0"/>
 </item>
-<item historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="1786" y="0"/>
+<item historyLabel="sample.cc" index="3">
+<position info="not_deleted" x="6474" y="0"/>
 </item>
-<item historyLabel="sample.cpp" index="2">
-<position/>
+<item historyLabel="main.cc" index="2">
+<position info="not_deleted" x="1163" y="0"/>
 </item>
-<item historyLabel="sample.h" index="3">
-<position info="not_deleted" x="1297" y="0"/>
+<item historyLabel="sample.cc" index="3">
+<position info="not_deleted" x="6540" y="31"/>
 </item>
-<item historyLabel="sample.cpp" index="2">
-<position/>
-</item>
-<item historyLabel="Samples.cpp" index="0">
-<position/>
-</item>
-<item historyLabel="sample.cpp" index="2">
-<position info="not_deleted" x="1866" y="15"/>
-</item>
-<item historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="1189" y="0"/>
-</item>
-<item historyLabel="sample.cpp" index="2">
-<position info="not_deleted" x="1866" y="15"/>
-</item>
-<item historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="1189" y="0"/>
-</item>
-<item historyLabel="sample.cpp" index="2">
-<position info="not_deleted" x="4553" y="1"/>
-</item>
-<item historyLabel="sample.h" index="3">
-<position info="not_deleted" x="1297" y="0"/>
-</item>
-<item historyLabel="sample.cpp" index="2">
-<position info="not_deleted" x="4557" y="0"/>
-</item>
-<item historyLabel="sample.h" index="3">
-<position info="not_deleted" x="1297" y="0"/>
-</item>
-<item historyLabel="sample.cpp" index="2">
-<position info="not_deleted" x="4865" y="93"/>
+<item historyLabel="samplet.cc" index="0">
+<position info="not_deleted" x="546" y="0"/>
 </item>
 <item historyLabel="samplet.h" index="1">
-<position info="not_deleted" x="4932" y="0"/>
+<position info="not_deleted" x="2569" y="0"/>
 </item>
-<item historyLabel="sample.cpp" index="2">
-<position info="not_deleted" x="4603" y="141"/>
+<item historyLabel="sample.h" index="4">
+<position info="not_deleted" x="1118" y="45"/>
 </item>
-<item historyLabel="samplet.h" index="1">
-<position info="not_deleted" x="4554" y="0"/>
-</item>
-<item historyLabel="sample.cpp" index="2">
-<position info="not_deleted" x="5141" y="0"/>
+<item historyLabel="sample.cc" index="3">
+<position info="not_deleted" x="6540" y="31"/>
 </item>
 <item historyLabel="samplet.h" index="1">
-<position info="not_deleted" x="5156" y="0"/>
+<position info="not_deleted" x="1570" y="0"/>
 </item>
-<item historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="2302" y="0"/>
+<item historyLabel="sample.h" index="4">
+<position info="not_deleted" x="1118" y="45"/>
+</item>
+<item historyLabel="sample.cc" index="3">
+<position info="not_deleted" x="2506" y="0"/>
+</item>
+<item historyLabel="samplet.cc" index="0">
+<position info="not_deleted" x="2114" y="0"/>
 </item>
 <item historyLabel="samplet.h" index="1">
-<position info="not_deleted" x="5156" y="0"/>
+<position info="not_deleted" x="2215" y="10"/>
 </item>
-<item historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="2302" y="0"/>
+<item historyLabel="samplet.cc" index="0">
+<position info="not_deleted" x="1574" y="0"/>
 </item>
-<item historyLabel="sample.cpp" index="4">
-<position info="not_deleted" x="5205" y="117"/>
+<item historyLabel="samplet.h" index="1">
+<position info="not_deleted" x="2215" y="10"/>
 </item>
-<item historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="1564" y="0"/>
+<item historyLabel="samplet.cc" index="0">
+<position info="not_deleted" x="1574" y="0"/>
 </item>
-<item historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="522" y="0"/>
+<item historyLabel="main.cc" index="2">
+<position info="not_deleted" x="496" y="0"/>
 </item>
-<item historyLabel="sample.cpp" index="4">
-<position info="not_deleted" x="5163" y="0"/>
+<item historyLabel="samplet.cc" index="0">
+<position info="not_deleted" x="2442" y="4"/>
 </item>
-<item historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="522" y="0"/>
+<item historyLabel="samplet.h" index="1">
+<position info="not_deleted" x="2215" y="10"/>
 </item>
-<item historyLabel="sample.cpp" index="4">
-<position info="not_deleted" x="5163" y="0"/>
+<item historyLabel="samplet.h" index="1">
+<position info="not_deleted" x="1589" y="0"/>
 </item>
-<item historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="522" y="0"/>
+<item historyLabel="samplet.cc" index="0">
+<position info="not_deleted" x="2449" y="0"/>
 </item>
-<item historyLabel="sample.cpp" index="4">
-<position info="not_deleted" x="5163" y="0"/>
+<item historyLabel="samplet.h" index="1">
+<position info="not_deleted" x="1589" y="0"/>
 </item>
-<item historyLabel="sample.h" index="5">
-<position info="not_deleted" x="1297" y="0"/>
+<item historyLabel="samplet.cc" index="0">
+<position info="not_deleted" x="2457" y="0"/>
 </item>
-<item historyLabel="samplet.h" index="6">
-<position info="not_deleted" x="5168" y="0"/>
+<item historyLabel="main.cc" index="2">
+<position info="not_deleted" x="496" y="0"/>
 </item>
-<item historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="522" y="0"/>
+<item historyLabel="samplet.cc" index="0">
+<position info="not_deleted" x="2457" y="0"/>
 </item>
-<item historyLabel="sample.cpp" index="4">
-<position/>
+<item historyLabel="samplet.h" index="1">
+<position info="not_deleted" x="1589" y="0"/>
 </item>
-<item historyLabel="samplet.h" index="6">
-<position info="not_deleted" x="4664" y="0"/>
+<item historyLabel="samplet.cc" index="0">
+<position info="not_deleted" x="2457" y="0"/>
 </item>
-<item historyLabel="sample.cpp" index="4">
-<position info="not_deleted" x="4730" y="0"/>
+<item historyLabel="samplet.h" index="1">
+<position info="not_deleted" x="1589" y="0"/>
 </item>
-<item historyLabel="samplet.h" index="6">
-<position info="not_deleted" x="4693" y="0"/>
+<item historyLabel="sample.cc" index="3">
+<position info="not_deleted" x="2506" y="0"/>
 </item>
-<item historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="2382" y="0"/>
+<item historyLabel="samplet.h" index="1">
+<position info="not_deleted" x="1589" y="0"/>
 </item>
-<item historyLabel="samplet.h" index="6">
-<position info="not_deleted" x="5119" y="0"/>
+<item historyLabel="samplet.cc" index="0">
+<position info="not_deleted" x="2425" y="0"/>
 </item>
-<item historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="2382" y="0"/>
+<item historyLabel="samplet.h" index="1">
+<position info="not_deleted" x="1578" y="0"/>
 </item>
-<item historyLabel="sample.h" index="7">
-<position info="not_deleted" x="1297" y="0"/>
+<item historyLabel="samplet.cc" index="0">
+<position info="not_deleted" x="2425" y="0"/>
 </item>
-<item historyLabel="samplet.h" index="8">
-<position info="not_deleted" x="5119" y="0"/>
+<item historyLabel="samplet.h" index="1">
+<position info="not_deleted" x="2592" y="0"/>
 </item>
-<item active="true" historyLabel="Samples.cpp" index="0">
-<position info="not_deleted" x="1586" y="0"/>
+<item historyLabel="samplet.cc" index="0">
+<position info="not_deleted" x="2425" y="0"/>
+</item>
+<item historyLabel="samplet.h" index="1">
+<position info="not_deleted" x="2576" y="15"/>
+</item>
+<item historyLabel="sample.cc" index="3">
+<position info="not_deleted" x="6580" y="0"/>
+</item>
+<item historyLabel="main.cc" index="2">
+<position info="not_deleted" x="554" y="0"/>
+</item>
+<item historyLabel="city.hh" index="5">
+<position info="not_deleted" x="205" y="0"/>
+</item>
+<item historyLabel="cityt.hh" index="6">
+<position info="not_deleted" x="252" y="0"/>
+</item>
+<item historyLabel="samplet.cc" index="0">
+<position info="not_deleted" x="2425" y="0"/>
+</item>
+<item historyLabel="main.cc" index="2">
+<position info="not_deleted" x="554" y="0"/>
+</item>
+<item historyLabel="main.cpp" index="7">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item active="true" historyLabel="main.cc" index="2">
+<position info="not_deleted" x="515" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -374,23 +425,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="samplett.h" tooltip="Samples/src/samplett.h">
-<persistable path="/Samples/src/samplett.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cpp" tooltip="main/src/main.cpp">
+<persistable path="/main/src/main.cpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="samplet.h" tooltip="Samples/src/samplet.h">
-<persistable path="/Samples/src/samplet.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="s.cpp" tooltip="Sample/src/s.cpp">
+<persistable path="/Sample/src/s.cpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="samplet.cpp" tooltip="Samples/src/samplet.cpp">
-<persistable path="/Samples/src/samplet.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sample.cpp" tooltip="Sample/src/sample.cpp">
+<persistable path="/Sample/src/sample.cpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sample.h" tooltip="Samples/src/sample.h">
-<persistable path="/Samples/src/sample.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="samplet.cpp" tooltip="Sample/src/samplet.cpp">
+<persistable path="/Sample/src/samplet.cpp"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sample.cpp" tooltip="Samples/src/sample.cpp">
-<persistable path="/Samples/src/sample.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sample.h" tooltip="Sample/src/sample.h">
+<persistable path="/Sample/src/sample.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Samples.cpp" tooltip="Samples/src/Samples.cpp">
-<persistable path="/Samples/src/Samples.cpp"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="samplet.h" tooltip="Sample/src/samplet.h">
+<persistable path="/Sample/src/samplet.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sample.h" tooltip="samples/src/sample.h">
+<persistable path="/samples/src/sample.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sample.cc" tooltip="samples/src/sample.cc">
+<persistable path="/samples/src/sample.cc"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="cityt.hh" tooltip="samples/src/cityt.hh">
+<persistable path="/samples/src/cityt.hh"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="city.hh" tooltip="samples/src/city.hh">
+<persistable path="/samples/src/city.hh"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="samplet.h" tooltip="samples/src/samplet.h">
+<persistable path="/samples/src/samplet.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="samplet.cc" tooltip="samples/src/samplet.cc">
+<persistable path="/samples/src/samplet.cc"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.cc" tooltip="samples/src/main.cc">
+<persistable path="/samples/src/main.cc"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="samplet.h" tooltip="main/src/samplet.h">
+<persistable path="/main/src/samplet.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="samplet.cpp" tooltip="main/src/samplet.cpp">
+<persistable path="/main/src/samplet.cpp"/>
 </file>
 </mruList>
 </workbench>

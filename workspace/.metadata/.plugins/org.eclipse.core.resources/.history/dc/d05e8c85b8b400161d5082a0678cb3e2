@@ -1,0 +1,62 @@
+//============================================================================
+// Name        : Sample.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <vector>
+#include "sample.h"
+#include "samplet.h"
+#include <sstream>
+
+using namespace std;
+
+Sample getSample() {
+	return Sample();
+}
+
+int main() {
+//int main(int argc, char *argv[]) {
+
+	vector<long double> d1 = { 3.4, 62, 9.2 };
+	vector<long double> d2 = { 5.4, 34, 7.8 };
+
+	d1.swap(d2);
+	for (vector<long double>::iterator it = d1.begin(); it != d1.end(); it++) {
+
+		cout << " D1: " << *it << flush;
+	}
+	cout << endl;
+	for (vector<long double>::iterator it = d2.begin(); it != d2.end(); it++) {
+
+		cout << " D2: " << *it << flush;
+	}
+
+	cout << endl;
+	Sample samp = { { 3.4, 62, 9.2 } };
+	Sample samp2 = Sample( { 5.4, 34, 7.8 });
+	Sample samp3( { 2.2, 26, 82.4, 11.8, 9.2 });
+
+	cout << (samp == samp2) << endl;
+
+	samp2[2] = 28.4;
+	cout << samp2[2] << endl;
+
+	samp3[ { 23.5, 6, 2.1, 7.3, 8.2 }];
+	samp3.print();
+
+	//	for (vector<long double>::iterator it = samp.y.begin(); it != samp.y.end(); it++) {
+	//
+	//		cout << *it << endl;
+	//	}
+
+	vector<int> yy = {2, 5, 74, 12, 35};
+	samplet<int> sampl();
+	//sampl.set_data(yy);
+
+
+	return 0;
+}

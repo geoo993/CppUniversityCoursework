@@ -1,0 +1,45 @@
+/*
+ * samplet.h
+ *
+ *  Created on: 27 Nov 2016
+ *      Author: GeorgeQuentin
+ */
+
+#ifndef SAMPLET_H_
+#define SAMPLET_H_
+
+#include <iostream>
+#include <vector>
+#include <math.h>
+#include <algorithm>
+#include <sstream>
+#include <cassert>
+
+using namespace std;
+
+template<typename T>
+class samplet {
+
+private:
+	const int N { 6 };
+	vector<T> y;
+
+public:
+
+
+	samplet();
+
+	samplet(vector<T> y);
+
+	samplet(const samplet &other);
+
+	samplet(samplet &&other);
+
+	samplet &operator=(const samplet &other);
+
+	samplet &operator=(samplet &&other);
+
+	virtual ~samplet();
+};
+
+#endif /* SAMPLET_H_ */

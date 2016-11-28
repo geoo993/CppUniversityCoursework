@@ -1,0 +1,37 @@
+#! /bin/sh -
+
+
+make clean > /dev/null 2>&1
+
+student=${student:-unknown}
+
+if [ z"${student}"z = zunknownz ] ; then
+  echo "" >&2
+  echo "You need to register first!" >&2
+  echo "Run register-me and follow the instructions." >&2
+  echo "" >&2
+  exit 1
+fi
+
+student="`echo $student | tr '[A-Z]' '[a-z]'`"
+
+if [ ! -d /tmp/. ] ; then
+  echo 'No /tmp directory - cannot continue' >&2
+  exit 1
+fi
+
+if [ -d "/tmp/${student}" ] ; then
+  rm "/tmp/${student}/*"
+else
+  mkdir "/tmp/${student}"
+fi
+cp -p *.{c*,h*,t*} \/\r\o\o\t\/\  Makefile "/tmp/${student}/" 2> /dev/null
+diro=`pwd`
+
+cd /tmp
+if [ -f "submittion-by-${student}".zip ] ; then
+  rm -f "submittion-by-${student}".zip
+fi
+zip -r "submittion-by-${student}" "${student}"
+mv "submittion-by-${student}".zip "${diro}"
+rm -rf "/tmp/${student}"

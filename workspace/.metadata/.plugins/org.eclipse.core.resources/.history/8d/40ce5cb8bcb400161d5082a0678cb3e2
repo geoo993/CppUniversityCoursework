@@ -1,0 +1,43 @@
+//============================================================================
+// Name        : main.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <vector>
+#include <math.h>
+#include <algorithm>
+#include <sstream>
+using namespace std;
+
+
+template <typename Item>
+class stack {
+
+public:
+	vector<Item> v;
+    Item & top();
+
+};
+
+
+template <typename Item>
+Item & stack<Item>::top() {
+	return v.back();
+}
+
+
+int main() {
+
+	vector<int> yy = {2, 5, 74, 12, 35};
+	stack<int> sampl;
+	sampl.v = yy;
+	sampl.top();
+		//sampl.set_data(yy);
+
+	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	return 0;
+}

@@ -1,0 +1,32 @@
+//============================================================================
+// Name        : main.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <vector>
+#include <math.h>
+#include <algorithm>
+#include <sstream>
+#include "samplet.cpp"
+using namespace std;
+
+
+
+
+int main() {
+
+	vector<int> yy = {2, 5, 74, 12, 35};
+
+
+	samplet<int> vc(yy);
+	samplet<string> vc2 = samplet({"dd", "sd", "cd"});
+	samplet<string> vc3({"dd", "sd", "cd"});
+
+	vc = vc2;
+
+	return 0;
+}

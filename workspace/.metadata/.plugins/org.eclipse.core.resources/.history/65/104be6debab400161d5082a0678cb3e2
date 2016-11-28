@@ -1,0 +1,17 @@
+/*
+ * samplet.cpp
+ *
+ *  Created on: 27 Nov 2016
+ *      Author: GeorgeQuentin
+ */
+
+#include "samplet.h"
+
+samplet::samplet() {
+	// TODO Auto-generated constructor stub
+
+}
+
+samplet::~samplet() {
+	// TODO Auto-generated destructor stub
+}
