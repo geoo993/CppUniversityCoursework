@@ -128,7 +128,7 @@ unsigned int samplet<T>::get_size() const {
 }
 
 template<typename T>
-T samplet<T>::find_data(int index) {
+T samplet<T>::find_data(unsigned int index) {
 
 	if (index < get_size()) {
 		return y[index];
@@ -265,7 +265,7 @@ T samplet<T>::mode() {
 		int count = 1;
 		int countMode = 1;
 
-		for (int i = 1; i < get_size(); i++) {
+		for (unsigned int i = 1; i < get_size(); i++) {
 			if (number == y[i]) {
 				count++;
 			} else {
@@ -357,7 +357,7 @@ void samplet<T>::print() const {
 
 	cout << "<" << N << ": " << flush;
 
-	for (int i = 0; i < y.size(); i++) {
+	for (unsigned int i = 0; i < y.size(); i++) {
 		cout << y[i] << " " << flush;
 	}
 

@@ -1,8 +1,5 @@
-src/main.d: ../src/main.cc ../src/samplet.h ../src/cityt.hh \
-  ../src/samplet.cc
+src/main.d: ../src/main.cc ../src/sample.h ../src/city.hh
 
-../src/samplet.h:
+../src/sample.h:
 
-../src/cityt.hh:
-
-../src/samplet.cc:
+../src/city.hh:

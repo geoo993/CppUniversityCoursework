@@ -10,8 +10,8 @@ struct city {
   city ( ) {}
   city ( const std::vector<long double> & data );
 
-  //static int has_copy_me;
-  //virtual city *copy_me() const;
+  static int has_copy_me;
+  virtual city *copy_me() const;
   
 };
 

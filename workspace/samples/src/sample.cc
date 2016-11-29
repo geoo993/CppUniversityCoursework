@@ -1,21 +1,75 @@
 #include <iostream>
-
+#include <fstream>//file stream
 #include "sample.h"
-
-using namespace std;
 
 int main_test(int argc, char *argv[]) {
 	/* an empty sample object - initialise with a vector once
 	 * you have defined the sample constructor that takes a
 	 * vector
 	 */
-	//	sample a_sample; // = { 7, 11, 2, 13, 3, 5};
-	//	cout << "\tBefore city_test()\n";
-	//	city_test(a_sample);
-	//	cout << "\tAfter city_test()\n";
+		sample a_sample; // = { 7, 11, 2, 13, 3, 5};
+		cout << "\tBefore city_test()\n";
+		city_test(a_sample);
+		cout << "\tAfter city_test()\n";
 
 	/* Place your code for testing sample after this line. */
-
+    
+     string outputFile = "cwk-input01.txt";
+     
+     fstream outFile;
+     outFile.open(outputFile, ios::out);
+     
+     if (outFile.is_open()) {
+     
+     while (cin >> a_sample)
+     
+     //2
+                    outFile << "George Quentin C++ Cousework 2016." << endl
+         
+                    <<  a_sample << endl
+     
+     //3
+					<< "Size: " << a_sample.get_size() << endl
+     
+     //4
+					<< "Smallest number: " << a_sample.minimum() << endl
+     
+     //5
+					<< "Largest number: " << a_sample.maximum() << endl
+     
+     //6
+					<< "Range: " << a_sample.range() << endl
+     
+     //7
+					<< "Mid-Range: " << a_sample.midrange() << endl
+     
+     //11
+					<< "Median: " << a_sample.median() << endl
+     
+     //8
+					<< "Sum: " << a_sample.sum() << endl
+     
+                    << "Mean: " << a_sample.mean() << endl
+     
+     //9
+					<< "Variance: " << a_sample.variance() << endl
+     
+                    << "Mode: " << a_sample.mode() << endl
+     
+     //10
+					<< "Standard Deviation: " << a_sample.std_deviation() << endl << endl
+                    
+                    << "The output is written in ---> " << outputFile  << endl;
+     
+         if (cin.bad())
+             cerr << "\nBad input\n\n";
+     
+         outFile.close();
+     
+     } else { cerr << "Could not create file " << outputFile << endl; }
+     
+     
+     
 	return 0;
 }
 
@@ -144,7 +198,7 @@ unsigned int sample::get_size() const {
 	return y.size();
 }
 
-long double sample::find_data(int index) {
+long double sample::find_data(unsigned int index) {
 
 	if (index < get_size()) {
 		return y[index];
@@ -273,7 +327,7 @@ long double sample::mode() {
 		int count = 1;
 		int countMode = 1;
 
-		for (int i = 1; i < get_size(); i++) {
+		for (unsigned int i = 1; i < get_size(); i++) {
 			if (number == y[i]) {
 				count++;
 			} else {
@@ -357,7 +411,7 @@ void sample::print() const {
 
 	cout << "<" << N << ": " << flush;
 
-	for (int i = 0; i < y.size(); i++) {
+	for (unsigned int i = 0; i < y.size(); i++) {
 		cout << y[i] << " " << flush;
 	}
 
@@ -376,7 +430,7 @@ ostream &operator<<(ostream &out, const sample &sample) {
 
 	out << "<" << sample.N << ": " << flush;
 
-	for (int i = 0; i < sample.get_size(); i++) {
+	for (unsigned int i = 0; i < sample.get_size(); i++) {
 		out << sample.y[i] << " " << flush;
 	}
 

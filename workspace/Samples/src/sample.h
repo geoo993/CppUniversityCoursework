@@ -54,7 +54,7 @@ public:
 	void insert_data (long double value);
 	bool check_unwanted_characters(string &str);
 	vector<long double> get_data() const;
-	long double find_data(int value);
+	long double find_data(unsigned int value);
 	long double minimum();
 	long double maximum();
 	long double range();

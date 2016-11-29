@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <sstream>
 #include <cassert>
+#include <initializer_list>
 
 using namespace std;
 #include "cityt.hh"
@@ -77,7 +78,7 @@ public:
 
 		unsigned int get_size() const;
 
-		T find_data(int index);
+		T find_data(unsigned int index);
 
 		void insert_data(T value);
 
@@ -114,7 +115,7 @@ public:
 
 			out << "<" << samplet.N << ": " << flush;
 
-			for (int i = 0; i < samplet.get_size(); i++) {
+			for (unsigned int i = 0; i < samplet.get_size(); i++) {
 				out << samplet.y[i] << " " << flush;
 			}
 
@@ -162,5 +163,5 @@ public:
 	};
 
 	/* With generic code, it's the header (.h) that includes the source (.cc), not the other way around that is the normal practice with non-generic code. */
-	//#include "samplet.cc"
+	#include "samplet.cc"
 #endif
