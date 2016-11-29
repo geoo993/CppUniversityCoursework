@@ -22,6 +22,13 @@ samplet<T>::samplet(vector<T> y) {
 }
 
 template<typename T>
+samplet<T>::samplet(const initializer_list<T>& y)
+{
+	this -> y = y;
+}
+
+
+template<typename T>
 samplet<T>::samplet(const samplet &other) {
 	this -> y = other.y;
 }
@@ -332,25 +339,17 @@ T samplet<T>::calculateAverage(const T &a, const T &b) {
 }
 
 template<typename T>
-void samplet<T>::remove_unwanted_characters(string &str) {
+bool samplet<T>::check_unwanted_characters(string &str) {
 
-	string fstring;
 	for (string::iterator it = str.begin(); it != str.end(); ++it) {
 
-		if (isdigit(*it)) {
-			fstring.push_back(*it);
-		} else if (*it == ' ') {
-			fstring.push_back(*it);
+		if (*it != ' ' && *it != '<' && *it != ':' && *it != '>' && !isdigit(*it)) {
+			return true;
+			break;
 		}
-
-		//		if (!isdigit(*it)) {
-		//			replace(str.begin(), str.end(), *it, ' ');
-		//		}
-
 	}
-	str = fstring;
-	//cout << str << " " << fstring << "\n";
 
+	return false;
 }
 
 template<typename T>

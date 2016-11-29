@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <sstream>
 #include <cassert>
+#include <initializer_list>
 
 using namespace std;
 #include "city.hh"
@@ -26,6 +27,8 @@ public:
 	sample();
 
 	sample(vector<long double> y);
+
+	sample(const initializer_list<long double> &y);
 
 	sample(const sample &other);
 
@@ -49,7 +52,7 @@ public:
 	unsigned int get_size() const;
 	void set_data(vector<long double> y);
 	void insert_data (long double value);
-	void remove_unwanted_characters(string &str);
+	bool check_unwanted_characters(string &str);
 	vector<long double> get_data() const;
 	long double find_data(int value);
 	long double minimum();

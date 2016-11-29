@@ -11,9 +11,8 @@
 using namespace std;
 #include "cityt.hh"
 
-
 template<typename T>
-class samplet: public cityt<T>{
+class samplet: public cityt<T> {
 	// DON'T CHANGE ANYTHING ABOVE THIS LINE!!! (You can add more includes)
 private:
 	unsigned int N = 0;
@@ -26,6 +25,8 @@ public:
 	samplet();
 
 	samplet(vector<T> y);
+
+	samplet(const initializer_list<T> &y);
 
 	samplet(const samplet &other);
 
@@ -102,16 +103,22 @@ public:
 
 		T calculateAverage(const T &a, const T &b);
 
-		void remove_unwanted_characters(string &str);
+		bool check_unwanted_characters(string &str);
 
 		void print() const;
-
-
 
 		friend ostream &operator<<(ostream &out, const samplet<T> &samplet) {
 
 			//out << "Sample to an output stream, using ostream << Operator Overloading of Samplet" << endl;
-			samplet.print();
+			//samplet.print();
+
+			out << "<" << samplet.N << ": " << flush;
+
+			for (int i = 0; i < samplet.get_size(); i++) {
+				out << samplet.y[i] << " " << flush;
+			}
+
+			out << ">";
 
 			return out;
 		}
@@ -125,33 +132,35 @@ public:
 
 			getline(cin, str);
 
-			//samplet.remove_unwanted_characters(str);
-			stringstream sStream(str);
-			T tempDouble;
+			if (!samplet.check_unwanted_characters(str)) {
 
-			while (sStream >> tempDouble)
+				stringstream sStream(str);
+				T tempDouble;
+
+				while (sStream >> tempDouble)
 				samplet.insert_data(tempDouble);
 
-			samplet.set_samplet(str, samplet);
+				samplet.set_samplet(str, samplet);
 
-			samplet.sort();
+				samplet.sort();
+			}else {
+				assert(samplet.check_unwanted_characters(str));
+				cout << "Invalid Character" << endl;
+			}
 
 			return in;
 		}
 
-
-
 		class iterator;
 
-		iterator begin() { return iterator(0, *this);}
+		iterator begin() {return iterator(0, *this);}
 
 		iterator end() {return iterator(get_size(), *this);}
 
-
 		virtual ~samplet();
 
-};
+	};
 
-/* With generic code, it's the header (.h) that includes the source (.cc), not the other way around that is the normal practice with non-generic code. */
-//#include "samplet.cc"
+	/* With generic code, it's the header (.h) that includes the source (.cc), not the other way around that is the normal practice with non-generic code. */
+	//#include "samplet.cc"
 #endif

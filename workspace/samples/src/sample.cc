@@ -28,6 +28,11 @@ sample::sample(vector<long double> y) {
 
 }
 
+sample::sample(const initializer_list<long double>& y)
+{
+	this -> y = y;
+}
+
 sample::sample(const sample &other) {
 	this -> y = other.y;
 }
@@ -119,7 +124,6 @@ void sample::set_sample(string &str, sample &sample) {
 		sample.insert_data(tempDouble);
 
 }
-
 
 void sample::set_data(vector<long double> y) {
 	this->y = y;
@@ -334,24 +338,18 @@ long double sample::median() {
 
 }
 
-void sample::remove_unwanted_characters(string &str) {
+bool sample::check_unwanted_characters(string &str) {
 
-	string fstring;
 	for (string::iterator it = str.begin(); it != str.end(); ++it) {
 
-		if (isdigit(*it)) {
-			fstring.push_back(*it);
-		} else if (*it == ' ') {
-			fstring.push_back(*it);
+		if (*it != ' ' && *it != '<' && *it != ':' && *it != '>' && !isdigit(
+				*it)) {
+			return true;
+			break;
 		}
-
-		//		if (!isdigit(*it)) {
-		//			replace(str.begin(), str.end(), *it, ' ');
-		//		}
-
 	}
-	str = fstring;
-	//cout << str << " " << fstring << "\n";
+
+	return false;
 
 }
 
@@ -374,7 +372,15 @@ sample::~sample() {
 ostream &operator<<(ostream &out, const sample &sample) {
 
 	//out << "Sample to an output stream, using ostream << Operator Overloading of Sample" << endl;
-	sample.print();
+	//sample.print();
+
+	out << "<" << sample.N << ": " << flush;
+
+	for (int i = 0; i < sample.get_size(); i++) {
+		out << sample.y[i] << " " << flush;
+	}
+
+	out << ">";
 
 	return out;
 }
@@ -389,10 +395,15 @@ istream & operator>>(istream &in, sample &sample) {
 
 	getline(cin, str);
 
-	//sample.remove_unwanted_characters(str);
-	sample.set_sample(str, sample);
+	if (!sample.check_unwanted_characters(str)) {
 
-	sample.sort();
+		sample.set_sample(str, sample);
+
+		sample.sort();
+
+	} else {
+		cout << "Invalid Character" << endl;
+	}
 
 	return in;
 }
