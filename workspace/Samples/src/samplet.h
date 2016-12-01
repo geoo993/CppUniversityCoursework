@@ -8,20 +8,16 @@
 #include <sstream>
 #include <cassert>
 #include <initializer_list>
+#include <fstream>//file stream
 
 using namespace std;
-#include "cityt.hh"
+
 
 template<typename T>
-class samplet: public cityt<T> {
-	// DON'T CHANGE ANYTHING ABOVE THIS LINE!!! (You can add more includes)
-private:
-	unsigned int N = 0;
+class samplet {
 
 public:
 	vector<T> y;
-
-public:
 
 	samplet();
 
@@ -78,6 +74,8 @@ public:
 
 		unsigned int get_size() const;
 
+		unsigned int N() const;
+
 		T find_data(unsigned int index);
 
 		void insert_data(T value);
@@ -106,51 +104,31 @@ public:
 
 		bool check_unwanted_characters(string &str);
 
-		void print() const;
-
 		friend ostream &operator<<(ostream &out, const samplet<T> &samplet) {
 
 			//out << "Sample to an output stream, using ostream << Operator Overloading of Samplet" << endl;
-			//samplet.print();
-
-			out << "<" << samplet.N << ": " << flush;
-
-			for (unsigned int i = 0; i < samplet.get_size(); i++) {
-				out << samplet.y[i] << " " << flush;
-			}
-
-			out << ">";
+			samplet.print(out);
 
 			return out;
 		}
 
 		friend istream &operator>>(istream &in, samplet<T> &samplet) {
 
-			samplet.y.clear();
-
 			string str;
 			cout << "Please Enter values in the Template Vector >" << flush;
 
 			getline(cin, str);
 
-			if (!samplet.check_unwanted_characters(str)) {
-
-				stringstream sStream(str);
-				T tempDouble;
-
-				while (sStream >> tempDouble)
-				samplet.insert_data(tempDouble);
-
-				samplet.set_samplet(str, samplet);
-
-				samplet.sort();
-			}else {
-				assert(samplet.check_unwanted_characters(str));
-				cout << "Invalid Character" << endl;
-			}
+			samplet.compute_set_sample(str, samplet);
 
 			return in;
 		}
+
+		void print(ostream &out) const;
+
+		void compute_set_sample(string &str, samplet &samplet) const;
+
+		void test(samplet &samplet, fstream &outputStream) const;
 
 		class iterator;
 
@@ -162,6 +140,6 @@ public:
 
 	};
 
-	/* With generic code, it's the header (.h) that includes the source (.cc), not the other way around that is the normal practice with non-generic code. */
-	#include "samplet.cc"
+//#include "samplet.cc"
+
 #endif

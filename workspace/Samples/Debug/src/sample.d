@@ -1,5 +1,3 @@
-src/sample.d: ../src/sample.cc ../src/sample.h ../src/city.hh
+src/sample.d: ../src/sample.cc ../src/sample.h
 
 ../src/sample.h:
-
-../src/city.hh:

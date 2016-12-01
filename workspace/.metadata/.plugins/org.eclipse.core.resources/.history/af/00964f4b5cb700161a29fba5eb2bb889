@@ -1,0 +1,57 @@
+#include <iostream>
+
+#include "sample.h"
+#include "samplet.h"
+#include "samplet.cc"
+
+using namespace std;
+
+int main(int argc, char *argv[]) {
+
+	sample a_sample;
+	//samplet<long double> a_sample;
+	samplet<double> a_sample1;
+	samplet<float> a_sample2;
+	samplet<int> a_sample3;
+
+	double max = std::numeric_limits<double>::max();
+	    double inf = std::numeric_limits<double>::infinity();
+
+	    if(inf > max)
+	        std::cout << inf << " is greater than " << max << '\n';
+
+
+
+	//<6: 7 11 2 13 3 5 >
+	string special_str = "<2: 1.18973e+4932 1.18973e+4932 >";
+	string outputFile = "cwk-input01.txt";
+
+	     fstream outFile;
+	     outFile.open(outputFile, ios::out);
+
+	     if (outFile.is_open()) {
+
+	    	 while (cin >> a_sample){
+
+	    	 	 a_sample.test(a_sample,outFile,outputFile);
+
+
+	    	 	 a_sample.compute_set_sample(special_str, a_sample);
+	    	 	 a_sample.test(a_sample,outFile,outputFile);
+
+	    	 	 outFile << "this is the maximum floating number range of a long double"
+	    	 			 << "(std::numeric_limits< long double >::max() is 1.18973e+4932)" <<
+	    	 }
+	    	 if (cin.bad())
+	             cerr << "\nBad input\n\n";
+
+	         outFile.close();
+
+	     } else { cerr << "Could not create file " << outputFile << endl; }
+
+
+
+
+
+	return 0;
+}

@@ -1,80 +1,6 @@
-#include <iostream>
-#include <fstream>//file stream
 #include "sample.h"
 
-int main_test(int argc, char *argv[]) {
-	/* an empty sample object - initialise with a vector once
-	 * you have defined the sample constructor that takes a
-	 * vector
-	 */
-		sample a_sample; // = { 7, 11, 2, 13, 3, 5};
-		cout << "\tBefore city_test()\n";
-		city_test(a_sample);
-		cout << "\tAfter city_test()\n";
-
-	/* Place your code for testing sample after this line. */
-    
-     string outputFile = "cwk-input01.txt";
-     
-     fstream outFile;
-     outFile.open(outputFile, ios::out);
-     
-     if (outFile.is_open()) {
-     
-     while (cin >> a_sample)
-     
-     //2
-                    outFile << "George Quentin C++ Cousework 2016." << endl
-         
-                    <<  a_sample << endl
-     
-     //3
-					<< "Size: " << a_sample.get_size() << endl
-     
-     //4
-					<< "Smallest number: " << a_sample.minimum() << endl
-     
-     //5
-					<< "Largest number: " << a_sample.maximum() << endl
-     
-     //6
-					<< "Range: " << a_sample.range() << endl
-     
-     //7
-					<< "Mid-Range: " << a_sample.midrange() << endl
-     
-     //11
-					<< "Median: " << a_sample.median() << endl
-     
-     //8
-					<< "Sum: " << a_sample.sum() << endl
-     
-                    << "Mean: " << a_sample.mean() << endl
-     
-     //9
-					<< "Variance: " << a_sample.variance() << endl
-     
-                    << "Mode: " << a_sample.mode() << endl
-     
-     //10
-					<< "Standard Deviation: " << a_sample.std_deviation() << endl << endl
-                    
-                    << "The output is written in ---> " << outputFile  << endl;
-     
-         if (cin.bad())
-             cerr << "\nBad input\n\n";
-     
-         outFile.close();
-     
-     } else { cerr << "Could not create file " << outputFile << endl; }
-     
-     
-     
-	return 0;
-}
-
-sample::sample() {
-	this -> y.resize(N);
+sample::sample(): y({}){
 }
 
 sample::sample(vector<long double> y) {
@@ -82,8 +8,7 @@ sample::sample(vector<long double> y) {
 
 }
 
-sample::sample(const initializer_list<long double>& y)
-{
+sample::sample(const initializer_list<long double>& y) {
 	this -> y = y;
 }
 
@@ -147,6 +72,8 @@ void sample::operator[](vector<long double> y) {
 
 void sample::set_sample(string &str, sample &sample) {
 
+	sample.y.clear();
+
 	bool colon_mark = false;
 	string sizeString;
 	string valuesString;
@@ -168,14 +95,22 @@ void sample::set_sample(string &str, sample &sample) {
 		}
 	}
 
+	unsigned int tempInt;
 	stringstream sizeStream(sizeString);
-	sizeStream >> sample.N;
-	//sample.y.resize(sample.N);
+	sizeStream >> tempInt;
 
 	stringstream sStream(valuesString);
 	long double tempDouble;
-	while (sStream >> tempDouble)
+	while (sStream >> tempDouble){
 		sample.insert_data(tempDouble);
+	}
+
+	if (sample.y.size() > tempInt){
+		sample.y.clear();
+		cerr << "Too many elements inserted, the max elements is: " << tempInt << endl;
+		assert(sample.y.size() > tempInt);
+	}
+
 
 }
 
@@ -198,6 +133,10 @@ unsigned int sample::get_size() const {
 	return y.size();
 }
 
+unsigned int sample::N() const {
+	return y.size();
+}
+
 long double sample::find_data(unsigned int index) {
 
 	if (index < get_size()) {
@@ -209,13 +148,12 @@ long double sample::find_data(unsigned int index) {
 
 long double sample::minimum() {
 
-	long double smallest = N;
+	long double smallest = (long double)N();
 
 	if (get_size() <= 0) {
 		return 0;
 	} else {
 		if (y.begin() == y.end()) {
-			//cout << "vector is empty " << endl;
 
 			smallest = *(y.end());
 			return smallest;
@@ -244,7 +182,6 @@ long double sample::maximum() {
 	} else {
 
 		if (y.begin() == y.end()) {
-			cout << "vector is empty " << endl;
 
 			largest = *(y.end());
 			return largest;
@@ -396,8 +333,8 @@ bool sample::check_unwanted_characters(string &str) {
 
 	for (string::iterator it = str.begin(); it != str.end(); ++it) {
 
-		if (*it != ' ' && *it != '<' && *it != ':' && *it != '>' && !isdigit(
-				*it)) {
+		if (!isdigit(*it) && *it != ' ' && *it != '<' && *it != ':' && *it != '>' && *it != '.' && *it != 'e' && *it != '+')
+		{
 			return true;
 			break;
 		}
@@ -407,47 +344,39 @@ bool sample::check_unwanted_characters(string &str) {
 
 }
 
-void sample::print() const {
-
-	cout << "<" << N << ": " << flush;
-
-	for (unsigned int i = 0; i < y.size(); i++) {
-		cout << y[i] << " " << flush;
-	}
-
-	cout << ">";
-}
-
-sample::~sample() {
-	//cout << "Destructor " << endl;
-
-}
-
 ostream &operator<<(ostream &out, const sample &sample) {
 
 	//out << "Sample to an output stream, using ostream << Operator Overloading of Sample" << endl;
-	//sample.print();
-
-	out << "<" << sample.N << ": " << flush;
-
-	for (unsigned int i = 0; i < sample.get_size(); i++) {
-		out << sample.y[i] << " " << flush;
-	}
-
-	out << ">";
+	sample.print(out);
 
 	return out;
 }
 
 istream & operator>>(istream &in, sample &sample) {
 
-	sample.y.clear();
-
 	string str;
 
 	cout << "Please Enter values in the Vector >" << flush;
 
 	getline(cin, str);
+
+	sample.compute_set_sample(str, sample);
+
+	return in;
+}
+
+void sample::print(ostream &out) const {
+
+	out << "<" << N() << ": " << flush;
+
+	for (unsigned int i = 0; i < y.size(); i++) {
+		out << y[i] << " " << flush;
+	}
+
+	out << ">";
+}
+
+void sample::compute_set_sample(string &str, sample &sample) const {
 
 	if (!sample.check_unwanted_characters(str)) {
 
@@ -456,9 +385,56 @@ istream & operator>>(istream &in, sample &sample) {
 		sample.sort();
 
 	} else {
-		cout << "Invalid Character" << endl;
+		cerr << "Invalid Character" << endl;
+		assert(sample.check_unwanted_characters(str));
 	}
 
-	return in;
+}
+
+void sample::test(sample &sample, fstream &outputStream¤) const {
+
+	//2
+	outputStream << "George Quentin C++ Cousework 2016." << endl
+
+			<< "Type: " << typeid(sample.y.front()).name() <<  endl
+
+			<< sample << endl
+
+	//3
+			<< "Size: " << sample.get_size() << endl
+
+	//4
+			<< "Smallest number: " << sample.minimum() << endl
+
+	//5
+			<< "Largest number: " << sample.maximum() << endl
+
+	//6
+			<< "Range: " << sample.range() << endl
+
+	//7
+			<< "Mid-Range: " << sample.midrange() << endl
+
+	//11
+			<< "Median: " << sample.median() << endl
+
+	//8
+			<< "Sum: " << sample.sum() << endl
+
+			<< "Mean: " << sample.mean() << endl
+
+	//9
+			<< "Variance: " << sample.variance() << endl
+
+			<< "Mode: " << sample.mode() << endl
+
+	//10
+			<< "Standard Deviation: " << sample.std_deviation() << endl << endl;
+
+}
+
+sample::~sample() {
+	//cout << "Destructor " << endl;
+
 }
 

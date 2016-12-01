@@ -12,8 +12,7 @@ void swapping(T& t1, T& t2) {
 } // implicitly destroy the expensive temporary copy of t1
 
 template<typename T>
-samplet<T>::samplet() {
-	this -> y.resize(N);
+samplet<T>::samplet() : y({}){
 }
 
 template<typename T>
@@ -22,11 +21,9 @@ samplet<T>::samplet(vector<T> y) {
 }
 
 template<typename T>
-samplet<T>::samplet(const initializer_list<T>& y)
-{
+samplet<T>::samplet(const initializer_list<T>& y) {
 	this -> y = y;
 }
-
 
 template<typename T>
 samplet<T>::samplet(const samplet &other) {
@@ -74,6 +71,8 @@ void samplet<T>::operator[](vector<T> y) {
 template<typename T>
 void samplet<T>::set_samplet(string &str, samplet &samplet) {
 
+	samplet.y.clear();
+
 	bool colon_mark = false;
 	string sizeString;
 	string valuesString;
@@ -95,17 +94,23 @@ void samplet<T>::set_samplet(string &str, samplet &samplet) {
 		}
 	}
 
+	unsigned int tempInt;
 	stringstream sizeStream(sizeString);
-	sizeStream >> samplet.N;
+	sizeStream >> tempInt;
 
 	stringstream sStream(valuesString);
 	long double tempDouble;
-	while (sStream >> tempDouble)
+	while (sStream >> tempDouble){
 		samplet.insert_data(tempDouble);
+	}
+	if (samplet.y.size() > tempInt){
+
+		samplet.y.clear();
+		cerr << "Too many elements inserted, the max elements is: " << tempInt << endl;
+		assert(samplet.y.size() > tempInt);
+	}
 
 }
-
-
 
 template<typename T>
 void samplet<T>::set_data(vector<T> y) {
@@ -128,6 +133,11 @@ unsigned int samplet<T>::get_size() const {
 }
 
 template<typename T>
+unsigned int samplet<T>::N() const {
+	return y.size();
+}
+
+template<typename T>
 T samplet<T>::find_data(unsigned int index) {
 
 	if (index < get_size()) {
@@ -145,7 +155,7 @@ void samplet<T>::insert_data(T value) {
 template<typename T>
 T samplet<T>::minimum() {
 
-	T smallest = N;
+	T smallest = N();
 
 	if (get_size() <= 0) {
 		return T();
@@ -343,7 +353,8 @@ bool samplet<T>::check_unwanted_characters(string &str) {
 
 	for (string::iterator it = str.begin(); it != str.end(); ++it) {
 
-		if (*it != ' ' && *it != '<' && *it != ':' && *it != '>' && !isdigit(*it)) {
+		if (!isdigit(*it) && *it != ' ' && *it != '<' && *it != ':' && *it != '>' && *it != '.' && *it != 'e' && *it != '+')
+		{
 			return true;
 			break;
 		}
@@ -353,15 +364,80 @@ bool samplet<T>::check_unwanted_characters(string &str) {
 }
 
 template<typename T>
-void samplet<T>::print() const {
+void samplet<T>::print(ostream &out) const {
 
-	cout << "<" << N << ": " << flush;
+	out << "<" << N() << ": " << flush;
 
 	for (unsigned int i = 0; i < y.size(); i++) {
-		cout << y[i] << " " << flush;
+		out << y[i] << " " << flush;
 	}
 
-	cout << ">";
+	out << ">";
+
+}
+
+template<typename T>
+void samplet<T>::compute_set_sample(string &str, samplet &samplet) const {
+
+	if (!samplet.check_unwanted_characters(str)) {
+
+		stringstream sStream(str);
+		T tempDouble;
+
+		while (sStream >> tempDouble)
+			samplet.insert_data(tempDouble);
+
+			samplet.set_samplet(str, samplet);
+
+			samplet.sort();
+	} else {
+		cerr << "Invalid Character" << endl;
+		assert(samplet.check_unwanted_characters(str));
+	}
+
+}
+
+template<typename T>
+void samplet<T>::test(samplet &samplet, fstream &outputStream) const {
+
+	//2
+	outputStream << "George Quentin C++ Cousework 2016." << endl
+
+			<< "Type: " << typeid(samplet.y.front()).name() <<  endl
+
+			<< samplet << endl
+
+	//3
+			<< "Size: " << samplet.get_size() << endl
+
+	//4
+			<< "Smallest number: " << samplet.minimum() << endl
+
+	//5
+			<< "Largest number: " << samplet.maximum() << endl
+
+	//6
+			<< "Range: " << samplet.range() << endl
+
+	//7
+			<< "Mid-Range: " << samplet.midrange() << endl
+
+	//11
+			<< "Median: " << samplet.median() << endl
+
+	//8
+			<< "Sum: " << samplet.sum() << endl
+
+			<< "Mean: " << samplet.mean() << endl
+
+	//9
+			<< "Variance: " << samplet.variance() << endl
+
+			<< "Mode: " << samplet.mode() << endl
+
+	//10
+			<< "Standard Deviation: " << samplet.std_deviation() << endl
+			<< endl;
 
 }
 
@@ -370,8 +446,6 @@ samplet<T>::~samplet() {
 	//cout << "Destructor " << endl;
 
 }
-
-
 
 template<typename T>
 class samplet<T>::iterator {

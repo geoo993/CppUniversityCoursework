@@ -1,0 +1,31 @@
+George Quentin C++ Cousework 2016.
+Type: e
+<6: 2 3 5 7 11 13 >
+Size: 6
+Smallest number: 2
+Largest number: 13
+Range: 11
+Mid-Range: 7.5
+Median: 6
+Sum: 41
+Mean: 6.83333
+Variance: 16.1389
+Mode: 2
+Standard Deviation: 4.01732
+
+George Quentin C++ Cousework 2016.
+Type: e
+<2: 1.18973e+4932 1.18973e+4932 >
+Size: 2
+Smallest number: 2
+Largest number: 1.18973e+4932
+Range: 1.18973e+4932
+Mid-Range: 5.94865e+4931
+Median: inf
+Sum: inf
+Mean: inf
+Variance: inf
+Mode: 1.18973e+4932
+Standard Deviation: inf
+
+This long double number (1.18973e+4932) is the maximum floating number range of a long double. You can prove this by doing: std::numeric_limits< long double >::max() is 1.18973e+4932). Setting this on an integer will give you: -2147483648, which is the minimum limit value of a signed long integer. when set on other types like double or float will just give you: inf, which is the special value "positive infinity", a number that I can simply describe as very large.
