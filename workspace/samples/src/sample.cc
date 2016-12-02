@@ -1,6 +1,7 @@
 #include "sample.h"
 
-sample::sample(): y({}){
+sample::sample() :
+	y( { }) {
 }
 
 sample::sample(vector<long double> y) {
@@ -72,6 +73,14 @@ void sample::operator[](vector<long double> y) {
 
 void sample::set_sample(string &str, sample &sample) {
 
+	string str2("1.18973e+4932");
+	size_t found = str.find(str2);
+	if (found != std::string::npos) {
+
+		sample.check_sample_long_double = true;
+
+	}
+
 	sample.y.clear();
 
 	bool colon_mark = false;
@@ -101,16 +110,16 @@ void sample::set_sample(string &str, sample &sample) {
 
 	stringstream sStream(valuesString);
 	long double tempDouble;
-	while (sStream >> tempDouble){
+	while (sStream >> tempDouble) {
 		sample.insert_data(tempDouble);
 	}
 
-	if (sample.y.size() > tempInt){
+	if (sample.y.size() > tempInt) {
 		sample.y.clear();
-		cerr << "Too many elements inserted, the max elements is: " << tempInt << endl;
+		cerr << "Too many elements inserted, the max elements is: " << tempInt
+				<< endl;
 		assert(sample.y.size() > tempInt);
 	}
-
 
 }
 
@@ -148,7 +157,7 @@ long double sample::find_data(unsigned int index) {
 
 long double sample::minimum() {
 
-	long double smallest = (long double)N();
+	long double smallest = (long double) N();
 
 	if (get_size() <= 0) {
 		return 0;
@@ -333,8 +342,8 @@ bool sample::check_unwanted_characters(string &str) {
 
 	for (string::iterator it = str.begin(); it != str.end(); ++it) {
 
-		if (!isdigit(*it) && *it != ' ' && *it != '<' && *it != ':' && *it != '>' && *it != '.' && *it != 'e' && *it != '+')
-		{
+		if (!isdigit(*it) && *it != ' ' && *it != '<' && *it != ':' && *it
+				!= '>' && *it != '.' && *it != 'e' && *it != '+') {
 			return true;
 			break;
 		}
@@ -360,7 +369,16 @@ istream & operator>>(istream &in, sample &sample) {
 
 	getline(cin, str);
 
-	sample.compute_set_sample(str, sample);
+	if (!sample.check_unwanted_characters(str)) {
+
+		sample.set_sample(str, sample);
+
+		sample.sort();
+
+	} else {
+		cerr << "Invalid Character" << endl;
+		assert(sample.check_unwanted_characters(str));
+	}
 
 	return in;
 }
@@ -376,29 +394,17 @@ void sample::print(ostream &out) const {
 	out << ">";
 }
 
-void sample::compute_set_sample(string &str, sample &sample) const {
+void sample::test(sample &sample, string &filename, fstream &outFile) {
 
-	if (!sample.check_unwanted_characters(str)) {
-
-		sample.set_sample(str, sample);
-
-		sample.sort();
-
-	} else {
-		cerr << "Invalid Character" << endl;
-		assert(sample.check_unwanted_characters(str));
-	}
-
-}
-
-void sample::test(sample &sample, fstream &outputStream¤) const {
+	string line;
+	ifstream inFile;
 
 	//2
-	outputStream << "George Quentin C++ Cousework 2016." << endl
+	outFile << "George Quentin C++ Cousework 2016." << endl
 
-			<< "Type: " << typeid(sample.y.front()).name() <<  endl
+	<< "Type: " << typeid(sample.y.front()).name() << endl
 
-			<< sample << endl
+	<< sample << endl
 
 	//3
 			<< "Size: " << sample.get_size() << endl
@@ -421,15 +427,36 @@ void sample::test(sample &sample, fstream &outputStream¤) const {
 	//8
 			<< "Sum: " << sample.sum() << endl
 
-			<< "Mean: " << sample.mean() << endl
+	<< "Mean: " << sample.mean() << endl
 
 	//9
 			<< "Variance: " << sample.variance() << endl
 
-			<< "Mode: " << sample.mode() << endl
+	<< "Mode: " << sample.mode() << endl
 
 	//10
 			<< "Standard Deviation: " << sample.std_deviation() << endl << endl;
+
+
+	if (sample.check_sample_long_double == true) {
+
+		outFile << "This long double number (1.18973e+4932) is the maximum floating number range of a long double. \n"
+				<< "You can prove this by doing: std::numeric_limits< long double >::max() is 1.18973e+4932). \n"
+				<< "Setting this on an integer will give you: -2147483648, \n"
+				<< "which is the minimum limit value of a signed long integer. \n"
+				<< "when set on other types like double or float will just give you: inf, which is the special value \"positive infinity\", \n"
+				<< "a number that I can simply describe as very large." << endl;
+
+	}
+
+	{
+		inFile.open(filename, ios::in);
+		while (inFile) {
+			getline(inFile, line);
+			cout << line << endl;
+		}
+		inFile.close();
+	}
 
 }
 

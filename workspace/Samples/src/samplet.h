@@ -19,6 +19,8 @@ class samplet {
 public:
 	vector<T> y;
 
+	bool check_samplet_long_double = false;
+
 	samplet();
 
 	samplet(vector<T> y);
@@ -119,16 +121,29 @@ public:
 
 			getline(cin, str);
 
-			samplet.compute_set_sample(str, samplet);
+			if (!samplet.check_unwanted_characters(str)) {
+
+				stringstream sStream(str);
+				T tempDouble;
+
+				while (sStream >> tempDouble)
+					samplet.insert_data(tempDouble);
+
+					samplet.set_samplet(str, samplet);
+
+					samplet.sort();
+			} else {
+				cerr << "Invalid Character" << endl;
+				assert(samplet.check_unwanted_characters(str));
+			}
+
 
 			return in;
 		}
 
 		void print(ostream &out) const;
 
-		void compute_set_sample(string &str, samplet &samplet) const;
-
-		void test(samplet &samplet, fstream &outputStream) const;
+		void test(samplet &samplet, string &filename, fstream &outFile) const;
 
 		class iterator;
 

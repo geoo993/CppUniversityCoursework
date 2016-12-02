@@ -12,7 +12,8 @@ void swapping(T& t1, T& t2) {
 } // implicitly destroy the expensive temporary copy of t1
 
 template<typename T>
-samplet<T>::samplet() : y({}){
+samplet<T>::samplet() :
+	y( { }) {
 }
 
 template<typename T>
@@ -68,8 +69,16 @@ void samplet<T>::operator[](vector<T> y) {
 	this -> y = y;
 }
 
+
+
 template<typename T>
 void samplet<T>::set_samplet(string &str, samplet &samplet) {
+
+	string str2("1.18973e+4932");
+	size_t found = str.find(str2);
+	if (found != std::string::npos) {
+		samplet.check_samplet_long_double = true;
+	}
 
 	samplet.y.clear();
 
@@ -100,13 +109,14 @@ void samplet<T>::set_samplet(string &str, samplet &samplet) {
 
 	stringstream sStream(valuesString);
 	long double tempDouble;
-	while (sStream >> tempDouble){
+	while (sStream >> tempDouble) {
 		samplet.insert_data(tempDouble);
 	}
-	if (samplet.y.size() > tempInt){
+	if (samplet.y.size() > tempInt) {
 
 		samplet.y.clear();
-		cerr << "Too many elements inserted, the max elements is: " << tempInt << endl;
+		cerr << "Too many elements inserted, the max elements is: " << tempInt
+				<< endl;
 		assert(samplet.y.size() > tempInt);
 	}
 
@@ -353,8 +363,8 @@ bool samplet<T>::check_unwanted_characters(string &str) {
 
 	for (string::iterator it = str.begin(); it != str.end(); ++it) {
 
-		if (!isdigit(*it) && *it != ' ' && *it != '<' && *it != ':' && *it != '>' && *it != '.' && *it != 'e' && *it != '+')
-		{
+		if (!isdigit(*it) && *it != ' ' && *it != '<' && *it != ':' && *it
+				!= '>' && *it != '.' && *it != 'e' && *it != '+') {
 			return true;
 			break;
 		}
@@ -377,35 +387,17 @@ void samplet<T>::print(ostream &out) const {
 }
 
 template<typename T>
-void samplet<T>::compute_set_sample(string &str, samplet &samplet) const {
+void samplet<T>::test(samplet &samplet, string &filename, fstream &outFile) const {
 
-	if (!samplet.check_unwanted_characters(str)) {
-
-		stringstream sStream(str);
-		T tempDouble;
-
-		while (sStream >> tempDouble)
-			samplet.insert_data(tempDouble);
-
-			samplet.set_samplet(str, samplet);
-
-			samplet.sort();
-	} else {
-		cerr << "Invalid Character" << endl;
-		assert(samplet.check_unwanted_characters(str));
-	}
-
-}
-
-template<typename T>
-void samplet<T>::test(samplet &samplet, fstream &outputStream) const {
+	string line;
+	ifstream inFile;
 
 	//2
-	outputStream << "George Quentin C++ Cousework 2016." << endl
+	outFile << "George Quentin C++ Cousework 2016." << endl
 
-			<< "Type: " << typeid(samplet.y.front()).name() <<  endl
+	<< "Type: " << typeid(samplet.y.front()).name() << endl
 
-			<< samplet << endl
+	<< samplet << endl
 
 	//3
 			<< "Size: " << samplet.get_size() << endl
@@ -428,16 +420,38 @@ void samplet<T>::test(samplet &samplet, fstream &outputStream) const {
 	//8
 			<< "Sum: " << samplet.sum() << endl
 
-			<< "Mean: " << samplet.mean() << endl
+	<< "Mean: " << samplet.mean() << endl
 
 	//9
 			<< "Variance: " << samplet.variance() << endl
 
-			<< "Mode: " << samplet.mode() << endl
+	<< "Mode: " << samplet.mode() << endl
 
 	//10
 			<< "Standard Deviation: " << samplet.std_deviation() << endl
 			<< endl;
+
+
+	if (samplet.check_samplet_long_double == true)
+	{
+
+		outFile << "This long double number (1.18973e+4932) is the maximum floating number range of a long double. \n"
+				<< "You can prove this by doing: std::numeric_limits< long double >::max() is 1.18973e+4932). \n"
+				<< "Setting this on an integer will give you: -2147483648, \n"
+				<< "which is the minimum limit value of a signed long integer. \n"
+				<< "when set on other types like double or float will just give you: inf, which is the special value \"positive infinity\", \n"
+				<< "a number that I can simply describe as very large." << endl;
+
+	}
+
+	{
+		inFile.open(filename, ios::in);
+		while (inFile) {
+			getline(inFile, line);
+			cout << line << endl;
+		}
+		inFile.close();
+	}
 
 }
 

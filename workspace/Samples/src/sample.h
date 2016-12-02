@@ -15,7 +15,10 @@ using namespace std;
 class sample {
 
 public:
+
 	vector <long double> y;
+
+	bool check_sample_long_double = false;
 
 	sample();
 
@@ -66,8 +69,7 @@ public:
 	friend istream &operator>>(istream &in, sample &sample);
 
 	void print(ostream &out) const;
-	void compute_set_sample(string &str, sample &sample) const;
-	void test(sample &sample, fstream &outputStream) const;
+	void test(sample &sample, string &filename, fstream &outFile);
 
 	virtual ~sample();
 
