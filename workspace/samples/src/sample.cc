@@ -71,15 +71,7 @@ void sample::operator[](vector<long double> y) {
 	this -> y = y;
 }
 
-void sample::set_sample(string &str, sample &sample) {
-
-	string str2("1.18973e+4932");
-	size_t found = str.find(str2);
-	if (found != std::string::npos) {
-
-		sample.check_sample_long_double = true;
-
-	}
+void sample::set_sample(char* &ch, sample &sample) {
 
 	sample.y.clear();
 
@@ -87,19 +79,18 @@ void sample::set_sample(string &str, sample &sample) {
 	string sizeString;
 	string valuesString;
 
-	for (string::iterator it = str.begin(); it != str.end(); ++it) {
+	for (int i = 0; i < strlen(ch); i++) {
 
-		if (*it == '<' || *it == '>') {
-			replace(str.begin(), str.end(), *it, ' ');
-		} else if (*it == ':') {
-			replace(str.begin(), str.end(), *it, ':');
+		if (ch[i] == '<' || ch[i] == '>') {
+			ch[i] = ' ';
+		} else if (ch[i] == ':') {
 			colon_mark = true;
 		} else {
 
 			if (colon_mark == true) {
-				valuesString.push_back(*it);
+				valuesString.push_back(ch[i]);
 			} else {
-				sizeString.push_back(*it);
+				sizeString.push_back(ch[i]);
 			}
 		}
 	}
@@ -114,12 +105,21 @@ void sample::set_sample(string &str, sample &sample) {
 		sample.insert_data(tempDouble);
 	}
 
+	string str("1.18973e+4932");
+	size_t found = valuesString.find(str);
+	if (found != std::string::npos) {
+
+		sample.check_sample_long_double = true;
+	}
+
+
 	if (sample.y.size() > tempInt) {
 		sample.y.clear();
 		cerr << "Too many elements inserted, the max elements is: " << tempInt
 				<< endl;
 		assert(sample.y.size() > tempInt);
 	}
+
 
 }
 
@@ -338,12 +338,12 @@ long double sample::median() {
 
 }
 
-bool sample::check_unwanted_characters(string &str) {
+bool sample::check_unwanted_characters(char * &ch) {
 
-	for (string::iterator it = str.begin(); it != str.end(); ++it) {
+	for (int i = 0; i < strlen(ch); i++) {
 
-		if (!isdigit(*it) && *it != ' ' && *it != '<' && *it != ':' && *it
-				!= '>' && *it != '.' && *it != 'e' && *it != '+') {
+		if (!isdigit(ch[i]) && ch[i] != ' ' && ch[i] != '<' && ch[i] != ':' && ch[i]
+				!= '>' && ch[i] != '.' && ch[i] != 'e' && ch[i] != '+') {
 			return true;
 			break;
 		}
@@ -363,22 +363,25 @@ ostream &operator<<(ostream &out, const sample &sample) {
 
 istream & operator>>(istream &in, sample &sample) {
 
-	string str;
+	const int MAX = numeric_limits<short int>::max();
+	char *ch = new char[MAX];
 
-	cout << "Please Enter values in the Vector >" << flush;
+	in.get(ch, MAX);
 
-	getline(cin, str);
+	if (!sample.check_unwanted_characters(ch)) {
 
-	if (!sample.check_unwanted_characters(str)) {
-
-		sample.set_sample(str, sample);
+		sample.set_sample(ch, sample);
 
 		sample.sort();
 
 	} else {
 		cerr << "Invalid Character" << endl;
-		assert(sample.check_unwanted_characters(str));
+		assert(sample.check_unwanted_characters(ch));
 	}
+
+	delete[] ch;
+	//ch = new char[ in.gcount() ];
+
 
 	return in;
 }
@@ -457,6 +460,9 @@ void sample::test(sample &sample, string &filename, fstream &outFile) {
 		}
 		inFile.close();
 	}
+
+
+	cout << "The output is also written in ---> " << filename << endl << endl;
 
 }
 

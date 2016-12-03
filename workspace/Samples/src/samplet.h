@@ -9,6 +9,7 @@
 #include <cassert>
 #include <initializer_list>
 #include <fstream>//file stream
+#include <limits>
 
 using namespace std;
 
@@ -66,7 +67,7 @@ public:
 
 		void operator[] (vector<T> y);
 
-		void set_samplet(string &str, samplet &samplet);
+		void set_samplet(char* &ch, samplet &samplet);
 
 		void set_data(vector<T> y);
 
@@ -104,7 +105,7 @@ public:
 
 		T calculateAverage(const T &a, const T &b);
 
-		bool check_unwanted_characters(string &str);
+		bool check_unwanted_characters(char * &ch);
 
 		friend ostream &operator<<(ostream &out, const samplet<T> &samplet) {
 
@@ -116,26 +117,26 @@ public:
 
 		friend istream &operator>>(istream &in, samplet<T> &samplet) {
 
-			string str;
-			cout << "Please Enter values in the Template Vector >" << flush;
+			const int MAX = numeric_limits<short int>::max();
+			char *ch = new char[MAX];
 
-			getline(cin, str);
+			in.get(ch, MAX);
 
-			if (!samplet.check_unwanted_characters(str)) {
 
-				stringstream sStream(str);
-				T tempDouble;
+			if (!samplet.check_unwanted_characters(ch)) {
 
-				while (sStream >> tempDouble)
-					samplet.insert_data(tempDouble);
+				samplet.set_samplet(ch, samplet);
 
-					samplet.set_samplet(str, samplet);
-
-					samplet.sort();
+				samplet.sort();
 			} else {
 				cerr << "Invalid Character" << endl;
-				assert(samplet.check_unwanted_characters(str));
+				assert(samplet.check_unwanted_characters(ch));
 			}
+
+
+			delete[] ch;
+			//ch = new char[ in.gcount() ];
+
 
 
 			return in;

@@ -70,15 +70,8 @@ void samplet<T>::operator[](vector<T> y) {
 }
 
 
-
 template<typename T>
-void samplet<T>::set_samplet(string &str, samplet &samplet) {
-
-	string str2("1.18973e+4932");
-	size_t found = str.find(str2);
-	if (found != std::string::npos) {
-		samplet.check_samplet_long_double = true;
-	}
+void samplet<T>::set_samplet(char* &ch, samplet &samplet) {
 
 	samplet.y.clear();
 
@@ -86,19 +79,18 @@ void samplet<T>::set_samplet(string &str, samplet &samplet) {
 	string sizeString;
 	string valuesString;
 
-	for (string::iterator it = str.begin(); it != str.end(); ++it) {
+	for (int i = 0; i < strlen(ch); i++) {
 
-		if (*it == '<' || *it == '>') {
-			replace(str.begin(), str.end(), *it, ' ');
-		} else if (*it == ':') {
-			replace(str.begin(), str.end(), *it, ':');
+		if (ch[i] == '<' || ch[i] == '>') {
+			ch[i] = ' ';
+		} else if (ch[i] == ':') {
 			colon_mark = true;
 		} else {
 
 			if (colon_mark == true) {
-				valuesString.push_back(*it);
+				valuesString.push_back(ch[i]);
 			} else {
-				sizeString.push_back(*it);
+				sizeString.push_back(ch[i]);
 			}
 		}
 	}
@@ -112,6 +104,14 @@ void samplet<T>::set_samplet(string &str, samplet &samplet) {
 	while (sStream >> tempDouble) {
 		samplet.insert_data(tempDouble);
 	}
+
+	string str("1.18973e+4932");
+	size_t found = valuesString.find(str);
+	if (found != std::string::npos) {
+
+		samplet.check_samplet_long_double = true;
+	}
+
 	if (samplet.y.size() > tempInt) {
 
 		samplet.y.clear();
@@ -359,12 +359,12 @@ T samplet<T>::calculateAverage(const T &a, const T &b) {
 }
 
 template<typename T>
-bool samplet<T>::check_unwanted_characters(string &str) {
+bool samplet<T>::check_unwanted_characters(char* &ch) {
 
-	for (string::iterator it = str.begin(); it != str.end(); ++it) {
+	for (int i = 0; i < strlen(ch); i++) {
 
-		if (!isdigit(*it) && *it != ' ' && *it != '<' && *it != ':' && *it
-				!= '>' && *it != '.' && *it != 'e' && *it != '+') {
+		if (!isdigit(ch[i]) && ch[i] != ' ' && ch[i] != '<' && ch[i] != ':' && ch[i]
+				!= '>' && ch[i] != '.' && ch[i] != 'e' && ch[i] != '+') {
 			return true;
 			break;
 		}
@@ -452,6 +452,8 @@ void samplet<T>::test(samplet &samplet, string &filename, fstream &outFile) cons
 		}
 		inFile.close();
 	}
+
+	cout << "The output is also written in ---> " << filename << endl << endl;
 
 }
 

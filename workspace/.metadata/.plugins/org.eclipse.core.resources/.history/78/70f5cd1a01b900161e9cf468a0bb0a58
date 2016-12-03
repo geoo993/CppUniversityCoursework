@@ -1,0 +1,501 @@
+#include "sample.h"
+
+sample::sample() :
+	y( { }) {
+}
+
+sample::sample(vector<long double> y) {
+	this -> y = y;
+
+}
+
+sample::sample(const initializer_list<long double>& y) {
+	this -> y = y;
+}
+
+sample::sample(const sample &other) {
+	this -> y = other.y;
+}
+
+sample::sample(sample &&other) {
+	this -> y = other.y;
+}
+
+sample &sample::operator=(const sample &other) {
+	this -> y = other.y;
+	return *this;
+}
+
+sample &sample::operator=(sample &&other) {
+	this -> y = other.y;
+
+	return *this;
+}
+
+bool operator==(const sample &l, const sample &r) {
+	return l.get_size() == r.get_size();
+}
+
+bool operator!=(const sample &l, const sample &r) {
+	return !(l.get_size() == r.get_size());
+}
+
+bool operator>(const sample &l, const sample &r) {
+	return l.get_size() > r.get_size();
+}
+
+bool operator>=(const sample &l, const sample &r) {
+	return l.get_size() >= r.get_size();
+}
+
+bool operator<(const sample &l, const sample &r) {
+	return l.get_size() < r.get_size(); // keep the same order
+}
+
+bool operator<=(const sample &l, const sample &r) {
+	return l.get_size() <= r.get_size();
+}
+
+long double &sample::operator[](const unsigned int index) {
+	assert(index >= 0 && index < get_size());
+	return this -> y[index];
+
+}
+
+const long double &sample::operator[](const unsigned int index) const {
+	assert(index >= 0 && index < get_size());
+	return this -> y[index];
+}
+
+void sample::operator[](vector<long double> y) {
+	this -> y = y;
+}
+
+void sample::set_sample(char* &ch, sample &sample) {
+
+	sample.y.clear();
+
+	bool colon_mark = false;
+	string sizeString;
+	string valuesString;
+
+//	for (string::iterator it = str.begin(); it != str.end(); ++it) {
+//
+//		if (*it == '<' || *it == '>') {
+//			replace(str.begin(), str.end(), *it, ' ');
+//		} else if (*it == ':') {
+//			replace(str.begin(), str.end(), *it, ':');
+//			colon_mark = true;
+//		} else {
+//
+//			if (colon_mark == true) {
+//				valuesString.push_back(*it);
+//			} else {
+//				sizeString.push_back(*it);
+//			}
+//		}
+//	}
+
+	for (int i = 0; i < strlen(ch); i++) {
+
+		if (ch[i] == '<' || ch[i] == '>') {
+			ch[i] = ' ';
+		} else if (ch[i] == ':') {
+			colon_mark = true;
+		} else {
+
+			if (colon_mark == true) {
+				valuesString.push_back(ch[i]);
+			} else {
+				sizeString.push_back(ch[i]);
+			}
+		}
+	}
+
+	unsigned int tempInt;
+	stringstream sizeStream(sizeString);
+	sizeStream >> tempInt;
+
+	stringstream sStream(valuesString);
+	long double tempDouble;
+	while (sStream >> tempDouble) {
+		sample.insert_data(tempDouble);
+	}
+
+	string str2("1.18973e+4932");
+	size_t found = str.find(str2);
+	if (found != std::string::npos) {
+
+		sample.check_sample_long_double = true;
+
+	}
+
+
+	if (sample.y.size() > tempInt) {
+		sample.y.clear();
+		cerr << "Too many elements inserted, the max elements is: " << tempInt
+				<< endl;
+		assert(sample.y.size() > tempInt);
+	}
+
+
+}
+
+void sample::set_data(vector<long double> y) {
+	this->y = y;
+}
+void sample::insert_data(long double value) {
+	y.push_back(value);
+}
+
+vector<long double> sample::get_data() const {
+	return y;
+}
+
+void sample::sort() {
+	::sort(y.begin(), y.end());
+}
+
+unsigned int sample::get_size() const {
+	return y.size();
+}
+
+unsigned int sample::N() const {
+	return y.size();
+}
+
+long double sample::find_data(unsigned int index) {
+
+	if (index < get_size()) {
+		return y[index];
+	} else {
+		return 0;
+	}
+}
+
+long double sample::minimum() {
+
+	long double smallest = (long double) N();
+
+	if (get_size() <= 0) {
+		return 0;
+	} else {
+		if (y.begin() == y.end()) {
+
+			smallest = *(y.end());
+			return smallest;
+
+		} else {
+
+			for (vector<long double>::iterator it = y.begin(); it != y.end(); it++) {
+
+				if (*it < smallest) {
+					smallest = *it;
+				}
+			}
+
+			return smallest;
+		}
+	}
+
+}
+
+long double sample::maximum() {
+
+	long double largest = 0;
+
+	if (get_size() <= 0) {
+		return 0;
+	} else {
+
+		if (y.begin() == y.end()) {
+
+			largest = *(y.end());
+			return largest;
+
+		} else {
+
+			for (vector<long double>::iterator it = y.begin(); it != y.end(); it++) {
+
+				if (*it > largest) {
+					largest = *it;
+				}
+			}
+
+		}
+
+		return largest;
+	}
+
+}
+
+long double sample::range() {
+
+	if (get_size() > 0) {
+		return maximum() - minimum();
+	} else {
+		return 0;
+	}
+
+}
+
+long double sample::midrange() {
+
+	if (get_size() > 0) {
+		return (maximum() + minimum()) / 2.0;
+	} else {
+		return 0;
+	}
+
+}
+
+long double sample::sum() {
+
+	long double result = 0;
+
+	if (get_size() > 0) {
+
+		for (vector<long double>::iterator it = y.begin(); it != y.end(); it++) {
+			result = result + *it;
+		}
+
+		return result;
+
+	} else {
+		return 0;
+	}
+}
+
+long double sample::mean() {
+
+	if (get_size() > 0) {
+		return sum() / get_size();
+	} else {
+		return 0;
+	}
+
+}
+
+long double sample::calculateAverage(const long double &a, const long double &b) {
+
+	return (a + b) / 2.0;
+}
+
+long double sample::mode() {
+
+	if (get_size() > 0) {
+
+		long double number = *(y.begin());
+		long double mode = number;
+
+		int count = 1;
+		int countMode = 1;
+
+		for (unsigned int i = 1; i < get_size(); i++) {
+			if (number == y[i]) {
+				count++;
+			} else {
+				if (count > countMode) {
+					countMode = count;
+					mode = number;
+				}
+				count = 1;
+				number = y[i];
+			}
+		}
+
+		return mode;
+	} else {
+		return 0;
+	}
+}
+
+long double sample::variance() {
+
+	if (get_size() > 0) {
+
+		long double result = 0;
+
+		for (vector<long double>::iterator it = y.begin(); it != y.end(); it++) {
+			result = result + pow(*it - mean(), 2.0);
+		}
+
+		return (result / get_size());//or result/(get_size()-1)
+
+	} else {
+		return 0;
+	}
+}
+
+long double sample::std_deviation() {
+	return sqrt(variance());
+}
+
+long double sample::median() {
+
+	if (get_size() > 0) {
+
+		sort();
+
+		int index = 0;
+
+		if (get_size() % 2 == 0) {
+			index = int(get_size() / 2.0);
+
+			return calculateAverage(y[index - 1], y[index]);
+
+		} else {
+			index = int(get_size() / 2.0) + 1;
+
+			return y[index - 1];
+		}
+
+	} else {
+		return 0;
+	}
+
+}
+
+bool sample::check_unwanted_characters(char * &ch) {
+
+//	for (string::iterator it = str.begin(); it != str.end(); ++it) {
+//
+//		if (!isdigit(*it) && *it != ' ' && *it != '<' && *it != ':' && *it
+//				!= '>' && *it != '.' && *it != 'e' && *it != '+') {
+//			return true;
+//			break;
+//		}
+//	}
+
+	for (int i = 0; i < strlen(ch); i++) {
+
+		if (!isdigit(ch[i]) && ch[i] != ' ' && ch[i] != '<' && ch[i] != ':' && ch[i]
+				!= '>' && ch[i] != '.' && ch[i] != 'e' && ch[i] != '+') {
+			return true;
+			break;
+		}
+	}
+
+	return false;
+
+}
+
+ostream &operator<<(ostream &out, const sample &sample) {
+
+	//out << "Sample to an output stream, using ostream << Operator Overloading of Sample" << endl;
+	sample.print(out);
+
+	return out;
+}
+
+istream & operator>>(istream &in, sample &sample) {
+
+	//string str;
+	const int MAX = numeric_limits<short int>::max();
+	char *ch = new char[MAX];
+
+	cout << "Please Enter values in the Vector >" << flush;
+
+	//getline(in, str);
+
+
+	in.get(ch, MAX);
+	cout << sample.check_unwanted_characters(ch) << endl;
+
+
+	if (!sample.check_unwanted_characters(ch)) {
+
+//		sample.set_sample(ch, sample);
+//
+//		sample.sort();
+
+	} else {
+		cerr << "Invalid Character" << endl;
+		assert(sample.check_unwanted_characters(ch));
+	}
+
+	return in;
+}
+
+void sample::print(ostream &out) const {
+
+	out << "<" << N() << ": " << flush;
+
+	for (unsigned int i = 0; i < y.size(); i++) {
+		out << y[i] << " " << flush;
+	}
+
+	out << ">";
+}
+
+void sample::test(sample &sample, string &filename, fstream &outFile) {
+
+	string line;
+	ifstream inFile;
+
+	//2
+	outFile << "George Quentin C++ Cousework 2016." << endl
+
+	<< "Type: " << typeid(sample.y.front()).name() << endl
+
+	<< sample << endl
+
+	//3
+			<< "Size: " << sample.get_size() << endl
+
+	//4
+			<< "Smallest number: " << sample.minimum() << endl
+
+	//5
+			<< "Largest number: " << sample.maximum() << endl
+
+	//6
+			<< "Range: " << sample.range() << endl
+
+	//7
+			<< "Mid-Range: " << sample.midrange() << endl
+
+	//11
+			<< "Median: " << sample.median() << endl
+
+	//8
+			<< "Sum: " << sample.sum() << endl
+
+	<< "Mean: " << sample.mean() << endl
+
+	//9
+			<< "Variance: " << sample.variance() << endl
+
+	<< "Mode: " << sample.mode() << endl
+
+	//10
+			<< "Standard Deviation: " << sample.std_deviation() << endl << endl;
+
+
+	if (sample.check_sample_long_double == true) {
+
+		outFile << "This long double number (1.18973e+4932) is the maximum floating number range of a long double. \n"
+				<< "You can prove this by doing: std::numeric_limits< long double >::max() is 1.18973e+4932). \n"
+				<< "Setting this on an integer will give you: -2147483648, \n"
+				<< "which is the minimum limit value of a signed long integer. \n"
+				<< "when set on other types like double or float will just give you: inf, which is the special value \"positive infinity\", \n"
+				<< "a number that I can simply describe as very large." << endl;
+
+	}
+
+	{
+		inFile.open(filename, ios::in);
+		while (inFile) {
+			getline(inFile, line);
+			cout << line << endl;
+		}
+		inFile.close();
+	}
+
+}
+
+sample::~sample() {
+	//cout << "Destructor " << endl;
+
+}
+

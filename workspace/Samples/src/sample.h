@@ -9,6 +9,7 @@
 #include <cassert>
 #include <initializer_list>
 #include <fstream>//file stream
+#include <limits>
 
 using namespace std;
 
@@ -44,12 +45,12 @@ public:
 	const long double &operator[] (const unsigned index) const;
 	void operator[] (vector<long double> y);
 
-	void set_sample(string &str, sample &sample);
+	void set_sample(char* &ch, sample &sample);
 	unsigned int get_size() const;
 	unsigned int N() const;
 	void set_data(vector<long double> y);
 	void insert_data (long double value);
-	bool check_unwanted_characters(string &str);
+	bool check_unwanted_characters(char * &ch);
 	vector<long double> get_data() const;
 	long double find_data(unsigned int value);
 	long double minimum();

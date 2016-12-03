@@ -1,17 +1,17 @@
 George Quentin C++ Cousework 2016.
-Type: e
-<2: 1.18973e+4932 1.18973e+4932 >
+Type: f
+<2: inf inf >
 Size: 2
 Smallest number: 2
-Largest number: 1.18973e+4932
-Range: 1.18973e+4932
-Mid-Range: 5.94865e+4931
+Largest number: inf
+Range: inf
+Mid-Range: inf
 Median: inf
 Sum: inf
 Mean: inf
-Variance: inf
-Mode: 1.18973e+4932
-Standard Deviation: inf
+Variance: nan
+Mode: inf
+Standard Deviation: nan
 
 This long double number (1.18973e+4932) is the maximum floating number range of a long double. 
 You can prove this by doing: std::numeric_limits< long double >::max() is 1.18973e+4932). 
