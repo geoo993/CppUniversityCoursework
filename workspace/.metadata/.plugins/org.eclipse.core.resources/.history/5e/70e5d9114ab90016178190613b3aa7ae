@@ -9,8 +9,8 @@ int main(int argc, char *argv[]) {
 	//sample a_sample;
 	//samplet<long double> a_sample;
 	//samplet<double> a_sample;
-	//samplet<float> a_sample;
-	samplet<int> a_sample;
+	samplet<float> a_sample;
+	//samplet<int> a_sample;
 
 
 	//<6: 7 11 2 13 3 5 >
@@ -31,7 +31,11 @@ int main(int argc, char *argv[]) {
 		 cerr << "\nBad input\n\n";
 	 outFile.close();
 
-
+//	long double me = (1.18973e+4932) / (1.18973e+4932);
+//
+//
+//	cout << me << " " << numeric_limits<long double>::min() << " and "
+//	        << numeric_limits<long double>::max() << endl;
 
 	return 0;
 }

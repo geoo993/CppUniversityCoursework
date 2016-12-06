@@ -165,7 +165,7 @@ void samplet<T>::insert_data(T value) {
 template<typename T>
 T samplet<T>::minimum() {
 
-	T smallest = (T)N();
+	T smallest = N();
 
 	if (get_size() <= 0) {
 		return T();

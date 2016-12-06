@@ -9,7 +9,6 @@
 #include <cassert>
 #include <initializer_list>
 #include <fstream>//file stream
-#include <typeinfo>
 #include <limits>
 
 using namespace std;

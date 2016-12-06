@@ -4,13 +4,26 @@
 
 using namespace std;
 
+
+int stringToInt(string str) {
+
+	const char* characters = str.c_str();
+
+	int value = 0;
+	for (int i = 0; i < strlen(characters); i++) {
+		value = value + (int) characters[i];
+	}
+
+	return value;
+}
+
 int main(int argc, char *argv[]) {
 
 	//sample a_sample;
 	//samplet<long double> a_sample;
 	//samplet<double> a_sample;
-	//samplet<float> a_sample;
-	samplet<int> a_sample;
+	samplet<float> a_sample;
+	//samplet<int> a_sample;
 
 
 	//<6: 7 11 2 13 3 5 >
@@ -30,7 +43,6 @@ int main(int argc, char *argv[]) {
 	 if (cin.bad())
 		 cerr << "\nBad input\n\n";
 	 outFile.close();
-
 
 
 	return 0;

@@ -31,7 +31,11 @@ int main(int argc, char *argv[]) {
 		 cerr << "\nBad input\n\n";
 	 outFile.close();
 
+	long double me = (1.18973e+4932) / (1.18973e+4932);
 
+
+	cout << me << " " << numeric_limits<long double>::min() << " and "
+	        << numeric_limits<long double>::max() << endl;
 
 	return 0;
 }
